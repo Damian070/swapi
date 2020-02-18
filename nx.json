@@ -1,0 +1,22 @@
+{
+  "npmScope": "swapi-app",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "swapi-app": {
+      "tags": []
+    },
+    "swapi-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["swapi-app"]
+    }
+  }
+}
