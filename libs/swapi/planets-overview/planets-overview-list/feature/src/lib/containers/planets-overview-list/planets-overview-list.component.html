@@ -1,0 +1,11 @@
+<ui-overview-list-table
+  [loading]="loading$ | async"
+  [planets]="planets$ | async"
+  [error]="error$ | async"
+></ui-overview-list-table>
+
+<ui-overview-list-pagination
+  [count]="count$ | async"
+  [page]="page$ | async"
+>
+</ui-overview-list-pagination>

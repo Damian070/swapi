@@ -17,6 +17,30 @@
     "swapi-app-e2e": {
       "tags": [],
       "implicitDependencies": ["swapi-app"]
+    },
+    "swapi-planets-overview-planets-overview-list-feature": {
+      "tags": []
+    },
+    "swapi-planets-overview-planets-overview-list-data-access": {
+      "tags": []
+    },
+    "swapi-planets-overview-planets-overview-details-feature": {
+      "tags": []
+    },
+    "swapi-planets-overview-planets-overview-details-data-access": {
+      "tags": []
+    },
+    "swapi-planets-overview-shell": {
+      "tags": []
+    },
+    "swapi-planets-overview-domain": {
+      "tags": []
+    },
+    "swapi-planets-overview-planets-overview-list-ui-ui-overview-list-table": {
+      "tags": []
+    },
+    "swapi-planets-overview-planets-overview-list-ui-ui-planets-overview-list-pagination-ui-overview-list-pagination": {
+      "tags": []
     }
   }
 }
