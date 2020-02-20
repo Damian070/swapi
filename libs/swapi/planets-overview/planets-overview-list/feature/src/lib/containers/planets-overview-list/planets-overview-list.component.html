@@ -4,8 +4,5 @@
   [error]="error$ | async"
 ></ui-overview-list-table>
 
-<ui-overview-list-pagination
-  [count]="count$ | async"
-  [page]="page$ | async"
->
+<ui-overview-list-pagination *ngIf="!(error$ | async)" [count]="count$ | async" [page]="page$ | async">
 </ui-overview-list-pagination>

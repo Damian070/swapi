@@ -1,0 +1,11 @@
+<mat-nav-list>
+
+  <h2>An error occured: {{message}}</h2>
+
+  <a [routerLink]="['/']" mat-list-item (click)="dismissSheet()">
+    <span mat-line>Go to the main page</span>
+  </a>
+  <a mat-list-item (click)="dismissSheet(); navigateBackwards()">
+  <span mat-line>Navigate to previous page</span>
+</a>
+</mat-nav-list>

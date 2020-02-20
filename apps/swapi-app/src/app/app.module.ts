@@ -6,9 +6,9 @@ import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
-import {RouterModule} from "@angular/router";
-import {PlanetsOverviewShellModule} from "@swapi-app/swapi/planets-overview/shell";
-import {NxModule} from "@nrwl/angular";
+import { RouterModule } from '@angular/router';
+import { PlanetsOverviewShellModule } from '@swapi-app/swapi/planets-overview/shell';
+import { NxModule } from '@nrwl/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -16,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     PlanetsOverviewShellModule,
-    RouterModule.forRoot([]),     EffectsModule.forRoot([]),
+    RouterModule.forRoot([]),
+    EffectsModule.forRoot([]),
     NxModule.forRoot(),
     StoreModule.forRoot(
       {},
@@ -32,9 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode
     }),
-    BrowserAnimationsModule],
+    BrowserAnimationsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule {}

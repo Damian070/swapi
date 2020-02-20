@@ -5,7 +5,7 @@ import {
   planetsAdapter
 } from './planets.reducer';
 
-import {planetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
+import { planetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 export const getPlanetsState = createFeatureSelector<
   PlanetsPartialState,

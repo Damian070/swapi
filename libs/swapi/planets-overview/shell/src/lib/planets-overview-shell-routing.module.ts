@@ -1,26 +1,44 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {PlanetsOverviewContainerComponent} from './containers/planets-overview-container/planets-overview-container.component'
+import { PlanetsOverviewContainerComponent } from './containers/planets-overview-container/planets-overview-container.component';
+import {PlanetsOverviewListResolver} from './resolvers/planets-overview-list-resolver'
 
-
-const routes: Routes = [{
-  path: '',
-  component: PlanetsOverviewContainerComponent,
-  children: [
-    {
+const routes: Routes = [
+  {
     path: '',
-    loadChildren: () => import('@swapi-app/swapi/planets-overview/planets-overview-list/feature').then(m=> m.PlanetsOverviewListModule)
-  },
-    {
-      path: ':planet-id',
-      loadChildren: () => import('@swapi-app/swapi/planets-overview/planets-overview-details/feature').then(m => m.PlanetsOverviewDetailsModule)
-    }
-  ]
-}];
+    component: PlanetsOverviewContainerComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        resolve: {planets: PlanetsOverviewListResolver},
+        loadChildren: () =>
+          import(
+            '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
+            ).then(m => m.PlanetsOverviewListModule)
+      },
+      {
+        path: ':pageNr',
+        resolve: {planets: PlanetsOverviewListResolver},
+        loadChildren: () =>
+          import(
+            '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
+            ).then(m => m.PlanetsOverviewListModule)
+      },
+      {
+        path: 'details/:planet-id',
+        loadChildren: () =>
+          import(
+            '@swapi-app/swapi/planets-overview/planets-overview-details/feature'
+          ).then(m => m.PlanetsOverviewDetailsModule)
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PlanetsOverviewShellRoutingModule { }
+export class PlanetsOverviewShellRoutingModule {}

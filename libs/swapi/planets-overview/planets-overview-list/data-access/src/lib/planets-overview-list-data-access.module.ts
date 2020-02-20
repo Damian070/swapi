@@ -5,8 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromPlanets from './+state/planets.reducer';
 import { PlanetsEffects } from './+state/planets.effects';
 import { PlanetsFacade } from './+state/planets.facade';
-import {HttpClientModule} from "@angular/common/http";
-import {PlanetsOverviewListDataAccessService} from "./services/planets-overview-list-data-access.service";
+import { HttpClientModule } from '@angular/common/http';
+import { PlanetsOverviewListDataAccessService } from './services/planets-overview-list-data-access.service';
 
 @NgModule({
   declarations: [],

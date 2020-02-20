@@ -4,7 +4,7 @@ import { select, Store, Action } from '@ngrx/store';
 
 import * as fromPlanets from './planets.reducer';
 import * as PlanetsSelectors from './planets.selectors';
-import {fromPlanetsActions} from "./planets.actions";
+import { fromPlanetsActions } from './planets.actions';
 
 @Injectable()
 export class PlanetsFacade {

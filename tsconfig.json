@@ -39,6 +39,9 @@
       ],
       "@swapi-app/swapi/planets-overview/planets-overview-list/ui/ui-planets-overview-list-pagination/ui-overview-list-pagination": [
         "libs/swapi/planets-overview/planets-overview-list/ui/ui-planets-overview-list-pagination/ui-overview-list-pagination/src/index.ts"
+      ],
+      "@swapi-app/swapi/shared/ui-bottom-sheet-message": [
+        "libs/swapi/shared/ui-bottom-sheet-message/src/index.ts"
       ]
     }
   },

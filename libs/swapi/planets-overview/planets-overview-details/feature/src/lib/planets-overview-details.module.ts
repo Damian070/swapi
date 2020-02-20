@@ -3,12 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { PlanetsOverviewDetailsRoutingModule } from './planets-overview-details-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    PlanetsOverviewDetailsRoutingModule
-  ]
+  imports: [CommonModule, PlanetsOverviewDetailsRoutingModule]
 })
-export class PlanetsOverviewDetailsModule { }
+export class PlanetsOverviewDetailsModule {}
