@@ -42,6 +42,9 @@
       ],
       "@swapi-app/swapi/shared/ui-bottom-sheet-message": [
         "libs/swapi/shared/ui-bottom-sheet-message/src/index.ts"
+      ],
+      "@swapi-app/swapi/shared/ui-header": [
+        "libs/swapi/shared/ui-header/src/index.ts"
       ]
     }
   },

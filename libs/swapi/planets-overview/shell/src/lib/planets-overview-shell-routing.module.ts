@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
-            ).then(m => m.PlanetsOverviewListModule)
+            ).then(m => m.PlanetsOverviewListDataListModule)
       },
       {
         path: ':pageNr',
@@ -24,7 +24,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
-            ).then(m => m.PlanetsOverviewListModule)
+            ).then(m => m.PlanetsOverviewListDataListModule)
       },
       {
         path: 'details/:planet-id',

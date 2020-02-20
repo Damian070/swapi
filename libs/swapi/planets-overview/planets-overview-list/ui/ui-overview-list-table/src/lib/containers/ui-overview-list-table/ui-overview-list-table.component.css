@@ -5,3 +5,7 @@ table {
 .mat-spinner {
   margin: 25% auto;
 }
+
+.mat-icon {
+  cursor: pointer;
+}

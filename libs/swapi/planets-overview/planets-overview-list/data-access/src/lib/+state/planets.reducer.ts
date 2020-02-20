@@ -9,6 +9,15 @@ import {
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
+function extractId(planetInfo) {
+  if(planetInfo.url) {
+    let url = planetInfo.url;
+    url = url.substring(0, url.length - 1);
+    url = url.slice(url.lastIndexOf('/') + 1);
+    return {...planetInfo, url};
+  } else return planetInfo;
+}
+
 export interface PlanetsEntitiesState
   extends EntityState<planetDetailsInterface> {}
 
@@ -58,13 +67,15 @@ export function reducer(
     }
 
     case fromPlanetsActions.Types.LoadPlanetsSuccess: {
-      console.log(action.payload);
+
+      const extractedIdsPayload = action.payload['results'].map(extractId);
+
       state = {
         ...state,
         loading: false,
         count: action.payload['count'],
         page: action.payload['page'],
-        planets: planetsAdapter.addAll(action.payload['results'], state.planets)
+        planets: planetsAdapter.addAll(extractedIdsPayload, state.planets)
       };
 
       break;

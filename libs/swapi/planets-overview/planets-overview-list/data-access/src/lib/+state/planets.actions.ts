@@ -1,8 +1,7 @@
 import { Action } from '@ngrx/store';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
-
-import { HttpErrorResponse } from '@angular/common/http';
 
 export namespace fromPlanetsActions {
   export enum Types {

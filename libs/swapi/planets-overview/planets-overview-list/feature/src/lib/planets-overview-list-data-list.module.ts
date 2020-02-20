@@ -18,4 +18,4 @@ import { UiOverviewListPaginationModule } from '@swapi-app/swapi/planets-overvie
     UiOverviewListPaginationModule
   ]
 })
-export class PlanetsOverviewListModule {}
+export class PlanetsOverviewListDataListModule {}

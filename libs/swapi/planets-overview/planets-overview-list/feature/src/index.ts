@@ -1,1 +1,1 @@
-export * from './lib/planets-overview-list.module';
+export * from './lib/planets-overview-list-data-list.module';

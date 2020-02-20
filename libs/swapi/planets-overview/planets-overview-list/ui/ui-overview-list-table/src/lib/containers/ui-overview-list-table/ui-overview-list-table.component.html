@@ -1,13 +1,3 @@
-<!--<div *ngFor="let planet of planets">-->
-
-<!--  <span>-->
-<!--    {{json.stringify(planet)}}-->
-<!--  </span>-->
-<!--  <br>-->
-<!--  <br>-->
-
-<!--</div>-->
-
 <mat-spinner *ngIf="loading && !httpError"></mat-spinner>
 
 <table
@@ -41,7 +31,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
     <td mat-cell *matCellDef="let element">
       <mat-icon>star_border</mat-icon>
-      <mat-icon>navigate_next</mat-icon>
+      <mat-icon *ngIf="element.url" [routerLink]="['/details/' + element.url]" >navigate_next</mat-icon>
     </td>
   </ng-container>
 

@@ -44,6 +44,9 @@
     },
     "swapi-shared-ui-bottom-sheet-message": {
       "tags": []
+    },
+    "swapi-shared-ui-header": {
+      "tags": []
     }
   }
 }
