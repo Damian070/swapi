@@ -19,8 +19,13 @@ export class PlanetsOverviewListComponent implements OnInit {
   loading$: Observable<boolean> = this.facade.loading$;
   count$: Observable<number> = this.facade.count$;
   page$: Observable<number> = this.facade.page$;
+  favouritePlanets$: Observable<planetDetailsInterface[]> = this.facade.favouritePlanets$;
 
   constructor(private facade: PlanetsFacade) {}
+
+  onTogglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface) {
+    this.facade.togglePlanetsFavouriteStatus(planetsDetails);
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
+import {PlanetsDetailsFacade} from "@swapi-app/swapi/planets-overview/planets-overview-details/data-access";
+
 @Component({
   selector: 'planets-overview-details',
   templateUrl: './planets-overview-details.component.html',
@@ -7,7 +9,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlanetsOverviewDetailsComponent implements OnInit {
-  constructor() {}
+  planetsDetails$ = this.facade.planetsDetails$;
+  error$ = this.facade.error$;
+  loading$ = this.facade.loading$;
+
+  constructor(private facade: PlanetsDetailsFacade) {}
 
   ngOnInit(): void {}
 }

@@ -8,7 +8,7 @@ import {fromPlanetsDetailsActions} from "./planets-details.actions";
 
 @Injectable()
 export class PlanetsDetailsFacade {
-  loaded$ = this.store.pipe(
+  loading$ = this.store.pipe(
     select(PlanetsDetailsSelectors.getPlanetsDetailsLoading)
   );
 

@@ -47,6 +47,9 @@
     },
     "swapi-shared-ui-header": {
       "tags": []
+    },
+    "swapi-planets-overview-planets-overview-details-ui": {
+      "tags": []
     }
   }
 }

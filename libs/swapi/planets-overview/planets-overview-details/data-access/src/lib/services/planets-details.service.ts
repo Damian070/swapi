@@ -3,16 +3,18 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 import {planetDetailsInterface} from "@swapi-app/swapi/planets-overview/domain";
+import {tap} from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "any"
 })
 export class PlanetsDetailsService {
-  apiPath: 'https://swapi.co/api/planets/';
-
   constructor(private http: HttpClient) { }
+  path = 'https://swapi.co/api/planets/';
 
   getPlanetsDetails(id: number): Observable<planetDetailsInterface> {
-    return this.http.get<planetDetailsInterface>(this.apiPath + id);
+    return this.http.get<planetDetailsInterface>(`${this.path}${id}`).pipe(
+      tap(console.log)
+    );
   }
 }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -14,8 +14,9 @@ import {UiBottomSheetMessageComponent} from "@swapi-app/swapi/shared/ui-bottom-s
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class UiOverviewListTableComponent implements OnInit{
+export class UiOverviewListTableComponent{
   @Input() loading: boolean;
+  @Input() favouritePlanets: planetDetailsInterface[];
   @Input() set error(error: HttpErrorResponse | null) {
     this.httpError = error;
     error && this.triggerBottomSheet(error);
@@ -24,6 +25,10 @@ export class UiOverviewListTableComponent implements OnInit{
     this.dataSource = new MatTableDataSource<planetDetailsInterface>(planets);
     this.dataSource.sort = this.sort;
   }
+
+  @Output() togglePlanetsFavouriteStatus: EventEmitter<planetDetailsInterface> = new EventEmitter<planetDetailsInterface>();
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   httpError: HttpErrorResponse | null;
 
@@ -36,9 +41,11 @@ export class UiOverviewListTableComponent implements OnInit{
   ];
   dataSource: MatTableDataSource<planetDetailsInterface>;
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-
   constructor(private _bottomSheet: MatBottomSheet) {}
+
+  onTogglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface) {
+    this.togglePlanetsFavouriteStatus.emit(planetsDetails);
+  }
 
   triggerBottomSheet(error) {
     const sheetRef = this._bottomSheet.open(UiBottomSheetMessageComponent, {
@@ -48,9 +55,5 @@ export class UiOverviewListTableComponent implements OnInit{
     });
     sheetRef.disableClose = true;
   }
-
-  ngOnInit(): void {
-  }
-
 
 }

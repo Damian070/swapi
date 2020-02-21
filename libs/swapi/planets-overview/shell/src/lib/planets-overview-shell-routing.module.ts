@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PlanetsOverviewContainerComponent } from './containers/planets-overview-container/planets-overview-container.component';
 import {PlanetsOverviewListResolver} from './resolvers/planets-overview-list-resolver'
+import {PlanetsOverviewDetailsResolver} from "./resolvers/planets-overview-details-resolver";
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
             ).then(m => m.PlanetsOverviewListDataListModule)
       },
       {
-        path: 'details/:planet-id',
+        path: 'details/:planetId',
+        resolve: {planetDetails: PlanetsOverviewDetailsResolver},
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-details/feature'

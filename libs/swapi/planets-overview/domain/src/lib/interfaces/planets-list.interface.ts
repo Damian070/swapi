@@ -7,4 +7,5 @@ export interface planetsListInterface {
   loading: boolean;
   error: HttpErrorResponse | null;
   planets: PlanetsEntitiesState;
+  favouritePlanets: PlanetsEntitiesState;
 }

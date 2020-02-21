@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-
 import { select, Store, Action } from '@ngrx/store';
 
+import {planetDetailsInterface} from "@swapi-app/swapi/planets-overview/domain";
 import * as fromPlanets from './planets.reducer';
 import * as PlanetsSelectors from './planets.selectors';
 import { fromPlanetsActions } from './planets.actions';
@@ -13,14 +13,15 @@ export class PlanetsFacade {
   error$ = this.store.pipe(select(PlanetsSelectors.getPlanetsError));
   page$ = this.store.pipe(select(PlanetsSelectors.getPlanetsPage));
   count$ = this.store.pipe(select(PlanetsSelectors.getPlanetsCount));
+  favouritePlanets$ = this.store.pipe(select(PlanetsSelectors.getFavouritePlanets));
 
   constructor(private store: Store<fromPlanets.PlanetsPartialState>) {}
 
-  dispatch(action: Action) {
-    this.store.dispatch(action);
+  togglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface) {
+    this.store.dispatch(new fromPlanetsActions.TogglePlanetsFavouriteStatus(planetsDetails));
   }
 
-  getPlanets(page = 1) {
-    this.dispatch(new fromPlanetsActions.LoadPlanets(page));
+  getPlanets(page:number = 1) {
+    this.store.dispatch(new fromPlanetsActions.LoadPlanets(page));
   }
 }

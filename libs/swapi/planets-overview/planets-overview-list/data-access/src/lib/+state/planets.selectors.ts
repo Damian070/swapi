@@ -14,6 +14,11 @@ export const getPlanetsState = createFeatureSelector<
 
 const { selectAll, selectEntities } = planetsAdapter.getSelectors();
 
+export const getFavouritePlanetsState = createSelector(
+  getPlanetsState,
+  (state: planetsListInterface) => state.favouritePlanets
+);
+
 export const getPlanetsLoading = createSelector(
   getPlanetsState,
   (state: planetsListInterface) => state.loading
@@ -37,6 +42,11 @@ export const getPlanetsPage = createSelector(
 export const getAllPlanets = createSelector(
   getPlanetsState,
   (state: planetsListInterface) => selectAll(state.planets)
+);
+
+export const getFavouritePlanets = createSelector(
+  getPlanetsState,
+  (state: planetsListInterface) => selectAll(state.favouritePlanets)
 );
 
 export const getPlanetsEntities = createSelector(

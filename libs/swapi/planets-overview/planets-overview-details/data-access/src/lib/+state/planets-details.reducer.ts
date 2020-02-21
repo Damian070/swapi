@@ -6,7 +6,7 @@ import {fromPlanetsDetailsActions} from './planets-details.actions';
 export const PLANETSDETAILS_FEATURE_KEY = 'planetsDetails';
 
 export interface State{
-  planetsDetails: planetDetailsInterface | {};
+  planetsDetails?: planetDetailsInterface | {};
   loading: boolean;
   error: HttpErrorResponse | null;
 }
@@ -16,7 +16,6 @@ export interface PlanetsDetailsPartialState {
 }
 
 export const initialState: State = {
-  planetsDetails: {},
   loading: false,
   error: null
 };

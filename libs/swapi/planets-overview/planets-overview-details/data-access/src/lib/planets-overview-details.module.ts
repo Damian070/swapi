@@ -21,4 +21,4 @@ import { PlanetsDetailsFacade } from './+state/planets-details.facade';
   ],
   providers: [PlanetsDetailsFacade]
 })
-export class PlanetsOverviewDetailsDataListModule {}
+export class PlanetsOverviewDetailsDataAccessModule {}

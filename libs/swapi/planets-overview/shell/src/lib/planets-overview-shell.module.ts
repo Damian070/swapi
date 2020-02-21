@@ -6,10 +6,12 @@ import { PlanetsOverviewContainerComponent } from './containers/planets-overview
 import {PlanetsOverviewListResolver} from './resolvers/planets-overview-list-resolver'
 import {PlanetsFacade} from "@swapi-app/swapi/planets-overview/planets-overview-list/data-access";
 import {UiHeaderModule} from "@swapi-app/swapi/shared/ui-header";
+import {PlanetsOverviewDetailsResolver} from "./resolvers/planets-overview-details-resolver";
+import {PlanetsDetailsFacade} from "@swapi-app/swapi/planets-overview/planets-overview-details/data-access";
 
 @NgModule({
   declarations: [PlanetsOverviewContainerComponent],
   imports: [CommonModule, PlanetsOverviewShellRoutingModule, UiHeaderModule],
-  providers: [PlanetsOverviewListResolver, PlanetsFacade]
+  providers: [PlanetsOverviewListResolver,PlanetsOverviewDetailsResolver, PlanetsFacade, PlanetsDetailsFacade]
 })
 export class PlanetsOverviewShellModule {}

@@ -6,6 +6,7 @@ import {
   planetsListInterface,
   planetDetailsInterface
 } from '@swapi-app/swapi/planets-overview/domain';
+import {from} from "rxjs";
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
@@ -29,6 +30,7 @@ export const planetsAdapter: EntityAdapter<
 
 export const initialState: planetsListInterface = {
   planets: planetsAdapter.getInitialState(),
+  favouritePlanets: planetsAdapter.getInitialState(),
   count: 0,
   page: 1,
   error: null,
@@ -44,6 +46,23 @@ export function reducer(
   action: fromPlanetsActions.CollectiveType
 ) {
   switch (action.type) {
+
+    case fromPlanetsActions.Types.TogglePlanetsFavouriteStatus: {
+      // @ts-ignore
+      const alreadyInFlag:boolean = state.favouritePlanets.ids.includes(action.payload.name);
+      console.log(state.favouritePlanets)
+      console.log(action.payload)
+      console.log({alreadyInFlag});
+
+      state= {
+        ...state,
+        favouritePlanets: alreadyInFlag ? planetsAdapter.removeOne(action.payload.name, state.favouritePlanets) :
+          planetsAdapter.addOne(action.payload, state.favouritePlanets)
+      };
+
+      break;
+    }
+
     case fromPlanetsActions.Types.LoadPlanets: {
 
       state = {
@@ -68,7 +87,7 @@ export function reducer(
 
     case fromPlanetsActions.Types.LoadPlanetsSuccess: {
 
-      const extractedIdsPayload = action.payload['results'].map(extractId);
+      const extractedIdsPayload = action.payload.results.map(extractId);
 
       state = {
         ...state,

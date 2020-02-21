@@ -1,1 +1,5 @@
-<p>planets-overview-details works!</p>
+<ui-planets-overview-details-card
+[planetDetails]="planetsDetails$ | async"
+[error]="error$ | async"
+[loading]="loading$ | async">
+</ui-planets-overview-details-card>
