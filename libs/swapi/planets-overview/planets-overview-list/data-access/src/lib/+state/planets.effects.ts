@@ -1,10 +1,27 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType, Effect } from '@ngrx/effects';
+import { Actions, ofType, Effect } from '@ngrx/effects';
 
 import { fromPlanetsActions } from './planets.actions';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import {
+  catchError,
+  first,
+  map,
+  mergeMap,
+  pluck,
+  switchMap,
+  take,
+  tap,
+  withLatestFrom
+} from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { getFavouritePlanetsArray } from './planets.selectors';
+
+import { PlanetsPartialState } from './planets.reducer';
+
+import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 @Injectable()
 export class PlanetsEffects {
@@ -19,8 +36,35 @@ export class PlanetsEffects {
     )
   );
 
+  @Effect({
+    dispatch: false
+  })
+  saveFaveToLocalStorage$ = this.actions$.pipe(
+    ofType(fromPlanetsActions.Types.TogglePlanetsFavouriteStatus),
+    withLatestFrom(this.store$.select(getFavouritePlanetsArray)),
+    tap(([action, faves]) =>
+      this.dataAccessService.updateFavesLocalStorage(faves)
+    )
+  );
+
+  @Effect()
+  loadFavesFromLocalStorage$ = this.actions$.pipe(
+    ofType(fromPlanetsActions.Types.LoadPlanetsFavourites),
+    mergeMap(() =>
+      this.dataAccessService
+        .loadFavesLocalStorage()
+        .pipe(
+          map(
+            (faves: planetDetailsInterface[]) =>
+              new fromPlanetsActions.LoadPlanetsFavouritesSuccess(faves)
+          )
+        )
+    )
+  );
+
   constructor(
     private actions$: Actions,
-    private dataAccessService: PlanetsOverviewListDataAccessService
+    private dataAccessService: PlanetsOverviewListDataAccessService,
+    private store$: Store<PlanetsPartialState>
   ) {}
 }

@@ -1,7 +1,6 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {PageEvent} from '@angular/material/paginator';
+import { Component, Input } from '@angular/core';
 
-import {PlanetsOverviewListComponentPresenter} from './ui-overview-list-pagination.presenter'
+import { PlanetsOverviewListComponentPresenter } from './ui-overview-list-pagination.presenter';
 
 @Component({
   selector: 'ui-overview-list-pagination',
@@ -9,26 +8,19 @@ import {PlanetsOverviewListComponentPresenter} from './ui-overview-list-paginati
   styleUrls: ['./ui-overview-list-pagination.component.css'],
   providers: [PlanetsOverviewListComponentPresenter]
 })
-
-export class UiOverviewListPaginationComponent implements OnChanges {
+export class UiOverviewListPaginationComponent {
   @Input() count: number;
   @Input() set page(page: number) {
-    console.log(page);
-    if(page)this.pageNr = page;
+    // console.log(page);
+    if (page) this.pageNr = page;
   }
   pageNr;
   pageSize = 10;
 
-
-
   constructor(private presenter: PlanetsOverviewListComponentPresenter) {}
 
   navigateAndUpdateStateOnPageChange(e) {
-    console.log(e);
-    this.presenter.navigate(Object.assign(e))
-  }
-
-  ngOnChanges(e): void {
     // console.log(e);
+    this.presenter.navigate(Object.assign(e));
   }
 }

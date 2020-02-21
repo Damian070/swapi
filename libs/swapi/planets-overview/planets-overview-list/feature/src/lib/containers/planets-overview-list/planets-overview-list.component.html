@@ -2,9 +2,13 @@
   [loading]="loading$ | async"
   [planets]="planets$ | async"
   [error]="error$ | async"
-  [favouritePlanets]="favouritePlanets$ | async"
+  [favouritePlanets]="favouritePlanetsArray$ | async"
   (togglePlanetsFavouriteStatus)="onTogglePlanetsFavouriteStatus($event)"
 ></ui-overview-list-table>
 
-<ui-overview-list-pagination *ngIf="!(error$ | async)" [count]="count$ | async" [page]="page$ | async">
+<ui-overview-list-pagination
+  *ngIf="!(error$ | async)"
+  [count]="count$ | async"
+  [page]="page$ | async"
+>
 </ui-overview-list-pagination>

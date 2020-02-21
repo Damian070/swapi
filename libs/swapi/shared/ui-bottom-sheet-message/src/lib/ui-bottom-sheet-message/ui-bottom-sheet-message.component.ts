@@ -1,6 +1,14 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit
+} from '@angular/core';
+import { Location } from '@angular/common';
+import {
+  MAT_BOTTOM_SHEET_DATA,
+  MatBottomSheetRef
+} from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'ui-bottom-sheet-message',
@@ -11,9 +19,11 @@ import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom
 export class UiBottomSheetMessageComponent {
   message: string;
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<UiBottomSheetMessageComponent>,
-              private _location: Location,
-              @Inject(MAT_BOTTOM_SHEET_DATA) data ) {
+  constructor(
+    private _bottomSheetRef: MatBottomSheetRef<UiBottomSheetMessageComponent>,
+    private _location: Location,
+    @Inject(MAT_BOTTOM_SHEET_DATA) data
+  ) {
     this.message = data.message;
   }
 
@@ -24,5 +34,4 @@ export class UiBottomSheetMessageComponent {
   navigateBackwards() {
     this._location.back();
   }
-
 }

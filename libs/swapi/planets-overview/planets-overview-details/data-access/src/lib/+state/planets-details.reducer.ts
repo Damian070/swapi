@@ -1,11 +1,11 @@
-import {HttpErrorResponse} from "@angular/common/http";
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
-import {fromPlanetsDetailsActions} from './planets-details.actions';
+import { fromPlanetsDetailsActions } from './planets-details.actions';
 
 export const PLANETSDETAILS_FEATURE_KEY = 'planetsDetails';
 
-export interface State{
+export interface State {
   planetsDetails?: planetDetailsInterface | {};
   loading: boolean;
   error: HttpErrorResponse | null;
@@ -24,11 +24,8 @@ export function reducer(
   state: State = initialState,
   action: fromPlanetsDetailsActions.CollectiveType
 ) {
-
-  switch(action.type) {
-
-    case fromPlanetsDetailsActions.Types.LoadPlanetsDetails:{
-
+  switch (action.type) {
+    case fromPlanetsDetailsActions.Types.LoadPlanetsDetails: {
       state = {
         ...state,
         loading: true,
@@ -36,11 +33,9 @@ export function reducer(
       };
 
       break;
-
     }
 
-    case fromPlanetsDetailsActions.Types.LoadPlanetsDetailsFailure:{
-
+    case fromPlanetsDetailsActions.Types.LoadPlanetsDetailsFailure: {
       state = {
         ...state,
         loading: false,
@@ -48,21 +43,17 @@ export function reducer(
       };
 
       break;
-
     }
 
     case fromPlanetsDetailsActions.Types.LoadPlanetsDetailsSuccess: {
-
       state = {
         ...state,
-        loading:false,
+        loading: false,
         planetsDetails: action.payload
       };
 
       break;
-
     }
-
   }
 
   return state;

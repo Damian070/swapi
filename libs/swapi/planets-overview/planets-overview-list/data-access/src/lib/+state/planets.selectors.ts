@@ -12,7 +12,7 @@ export const getPlanetsState = createFeatureSelector<
   planetsListInterface
 >(PLANETS_FEATURE_KEY);
 
-const { selectAll, selectEntities } = planetsAdapter.getSelectors();
+const { selectAll } = planetsAdapter.getSelectors();
 
 export const getFavouritePlanetsState = createSelector(
   getPlanetsState,
@@ -49,7 +49,12 @@ export const getFavouritePlanets = createSelector(
   (state: planetsListInterface) => selectAll(state.favouritePlanets)
 );
 
-export const getPlanetsEntities = createSelector(
+export const getFavouritePlanetsBranch = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => selectEntities(state.planets)
+  (state: planetsListInterface) => state.favouritePlanets
+);
+
+export const getFavouritePlanetsArray = createSelector(
+  getPlanetsState,
+  (state: planetsListInterface) => selectAll(state.favouritePlanets)
 );

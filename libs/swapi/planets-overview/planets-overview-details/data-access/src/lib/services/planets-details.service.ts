@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import {Observable} from 'rxjs';
 
-import {planetDetailsInterface} from "@swapi-app/swapi/planets-overview/domain";
-import {tap} from "rxjs/operators";
+import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
+import {mergeMap, tap, withLatestFrom} from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "any"
+  providedIn: 'any'
 })
 export class PlanetsDetailsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   path = 'https://swapi.co/api/planets/';
 
-  getPlanetsDetails(id: number): Observable<planetDetailsInterface> {
+  getPlanetsDetails(id: number): Observable<any> {
     return this.http.get<planetDetailsInterface>(`${this.path}${id}`).pipe(
+      tap(console.log),
+      // withLatestFrom(planetsDetails => this.http.get(planetsDetails.residents[0])),
       tap(console.log)
+      // withLatestFrom(planetsDetails => this.http.get(planetsDetails.residents))
     );
   }
 }

@@ -50,6 +50,9 @@
     },
     "swapi-planets-overview-planets-overview-details-ui": {
       "tags": []
+    },
+    "swapi-planets-overview-planets-overview-favourites-list": {
+      "tags": []
     }
   }
 }

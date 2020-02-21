@@ -12,14 +12,14 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./planets-overview-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-
 export class PlanetsOverviewListComponent implements OnInit {
   planets$: Observable<planetDetailsInterface[]> = this.facade.allPlanets$;
   error$: Observable<HttpErrorResponse | null> = this.facade.error$;
   loading$: Observable<boolean> = this.facade.loading$;
   count$: Observable<number> = this.facade.count$;
   page$: Observable<number> = this.facade.page$;
-  favouritePlanets$: Observable<planetDetailsInterface[]> = this.facade.favouritePlanets$;
+  favouritePlanetsArray$: Observable<planetDetailsInterface[]> = this.facade
+    .favouritePlanetsArray$;
 
   constructor(private facade: PlanetsFacade) {}
 
@@ -27,6 +27,5 @@ export class PlanetsOverviewListComponent implements OnInit {
     this.facade.togglePlanetsFavouriteStatus(planetsDetails);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

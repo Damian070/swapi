@@ -2,34 +2,31 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PlanetsOverviewContainerComponent } from './containers/planets-overview-container/planets-overview-container.component';
-import {PlanetsOverviewListResolver} from './resolvers/planets-overview-list-resolver'
-import {PlanetsOverviewDetailsResolver} from "./resolvers/planets-overview-details-resolver";
+import { PlanetsOverviewListResolver } from './resolvers/planets-overview-list-resolver';
+import { PlanetsOverviewDetailsResolver } from './resolvers/planets-overview-details-resolver';
 
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'planets'
+  },
+  {
+    path: 'planets',
     component: PlanetsOverviewContainerComponent,
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        resolve: {planets: PlanetsOverviewListResolver},
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        resolve: { planets: PlanetsOverviewListResolver },
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
-            ).then(m => m.PlanetsOverviewListDataListModule)
-      },
-      {
-        path: ':pageNr',
-        resolve: {planets: PlanetsOverviewListResolver},
-        loadChildren: () =>
-          import(
-            '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
-            ).then(m => m.PlanetsOverviewListDataListModule)
+          ).then(m => m.PlanetsOverviewListDataListModule)
       },
       {
         path: 'details/:planetId',
-        resolve: {planetDetails: PlanetsOverviewDetailsResolver},
+        resolve: { planetDetails: PlanetsOverviewDetailsResolver },
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-details/feature'

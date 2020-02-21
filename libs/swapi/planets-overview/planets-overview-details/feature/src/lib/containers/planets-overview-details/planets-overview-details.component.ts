@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import {PlanetsDetailsFacade} from "@swapi-app/swapi/planets-overview/planets-overview-details/data-access";
+import { PlanetsDetailsFacade } from '@swapi-app/swapi/planets-overview/planets-overview-details/data-access';
 
 @Component({
   selector: 'planets-overview-details',

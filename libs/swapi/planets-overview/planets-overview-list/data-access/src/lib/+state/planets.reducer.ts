@@ -6,16 +6,15 @@ import {
   planetsListInterface,
   planetDetailsInterface
 } from '@swapi-app/swapi/planets-overview/domain';
-import {from} from "rxjs";
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
 function extractId(planetInfo) {
-  if(planetInfo.url) {
+  if (planetInfo.url) {
     let url = planetInfo.url;
     url = url.substring(0, url.length - 1);
     url = url.slice(url.lastIndexOf('/') + 1);
-    return {...planetInfo, url};
+    return { ...planetInfo, url };
   } else return planetInfo;
 }
 
@@ -46,25 +45,40 @@ export function reducer(
   action: fromPlanetsActions.CollectiveType
 ) {
   switch (action.type) {
+    case fromPlanetsActions.Types.LoadPlanetsFavouritesSuccess: {
+      console.log(action);
+
+      state = {
+        ...state,
+        favouritePlanets: planetsAdapter.addAll(
+          action.payload,
+          state.favouritePlanets
+        )
+      };
+
+      break;
+    }
 
     case fromPlanetsActions.Types.TogglePlanetsFavouriteStatus: {
-      // @ts-ignore
-      const alreadyInFlag:boolean = state.favouritePlanets.ids.includes(action.payload.name);
-      console.log(state.favouritePlanets)
-      console.log(action.payload)
-      console.log({alreadyInFlag});
+      const alreadyInFlag: boolean = state.favouritePlanets.ids.includes(
+        // @ts-ignore
+        action.payload.name
+      );
 
-      state= {
+      state = {
         ...state,
-        favouritePlanets: alreadyInFlag ? planetsAdapter.removeOne(action.payload.name, state.favouritePlanets) :
-          planetsAdapter.addOne(action.payload, state.favouritePlanets)
+        favouritePlanets: alreadyInFlag
+          ? planetsAdapter.removeOne(
+              action.payload.name,
+              state.favouritePlanets
+            )
+          : planetsAdapter.addOne(action.payload, state.favouritePlanets)
       };
 
       break;
     }
 
     case fromPlanetsActions.Types.LoadPlanets: {
-
       state = {
         ...state,
         loading: true,
@@ -86,7 +100,6 @@ export function reducer(
     }
 
     case fromPlanetsActions.Types.LoadPlanetsSuccess: {
-
       const extractedIdsPayload = action.payload.results.map(extractId);
 
       state = {

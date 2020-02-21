@@ -9,8 +9,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {
   UiBottomSheetMessageComponent,
   UiBottomSheetMessageModule
-} from "@swapi-app/swapi/shared/ui-bottom-sheet-message";
-import {RouterModule} from "@angular/router";
+} from '@swapi-app/swapi/shared/ui-bottom-sheet-message';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [UiOverviewListTableComponent],

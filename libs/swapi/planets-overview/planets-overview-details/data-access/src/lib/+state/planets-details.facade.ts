@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 
 import * as fromPlanetsDetails from './planets-details.reducer';
 import * as PlanetsDetailsSelectors from './planets-details.selectors';
-import {fromPlanetsDetailsActions} from "./planets-details.actions";
+import { fromPlanetsDetailsActions } from './planets-details.actions';
 
 @Injectable()
 export class PlanetsDetailsFacade {
@@ -25,6 +25,8 @@ export class PlanetsDetailsFacade {
   ) {}
 
   loadPlanetsDetails(planetsId: number) {
-    this.store.dispatch(new fromPlanetsDetailsActions.LoadPlanetsDetails(planetsId))
+    this.store.dispatch(
+      new fromPlanetsDetailsActions.LoadPlanetsDetails(planetsId)
+    );
   }
 }
