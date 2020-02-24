@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { PlanetsEntitiesState } from '@swapi-app/swapi/planets-overview/planets-overview-list/data-access';
+import { PlanetsEntitiesState } from '@swapi-app/swapi/planets-overview/data-access';
 
 export interface planetsListInterface {
   count: number;

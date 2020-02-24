@@ -16,11 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@swapi-app/swapi/planets-overview/planets-overview-list/feature": [
-        "libs/swapi/planets-overview/planets-overview-list/feature/src/index.ts"
-      ],
-      "@swapi-app/swapi/planets-overview/planets-overview-list/data-access": [
-        "libs/swapi/planets-overview/planets-overview-list/data-access/src/index.ts"
+      "@swapi-app/swapi/planets-overview/planets-overview-lists/planets-overview-list/feature": [
+        "libs/swapi/planets-overview/planets-overview-lists/planets-overview-list/feature/src/index.ts"
       ],
       "@swapi-app/swapi/planets-overview/planets-overview-details/feature": [
         "libs/swapi/planets-overview/planets-overview-details/feature/src/index.ts"
@@ -34,11 +31,11 @@
       "@swapi-app/swapi/planets-overview/domain": [
         "libs/swapi/planets-overview/domain/src/index.ts"
       ],
-      "@swapi-app/swapi/planets-overview/planets-overview-list/ui/ui-overview-list-table": [
-        "libs/swapi/planets-overview/planets-overview-list/ui/ui-overview-list-table/src/index.ts"
+      "@swapi-app/swapi/planets-overview/planets-overview-lists/shared/ui/ui-overview-list-table": [
+        "libs/swapi/planets-overview/planets-overview-lists/shared/ui/ui-overview-list-table/src/index.ts"
       ],
-      "@swapi-app/swapi/planets-overview/planets-overview-list/ui/ui-planets-overview-list-pagination/ui-overview-list-pagination": [
-        "libs/swapi/planets-overview/planets-overview-list/ui/ui-planets-overview-list-pagination/ui-overview-list-pagination/src/index.ts"
+      "@swapi-app/swapi/planets-overview/planets-overview-lists/shared/ui/ui-planets-overview-list-pagination/ui-overview-list-pagination": [
+        "libs/swapi/planets-overview/planets-overview-lists/shared/ui/ui-planets-overview-list-pagination/ui-overview-list-pagination/src/index.ts"
       ],
       "@swapi-app/swapi/shared/ui-bottom-sheet-message": [
         "libs/swapi/shared/ui-bottom-sheet-message/src/index.ts"
@@ -49,8 +46,11 @@
       "@swapi-app/swapi/planets-overview/planets-overview-details/ui": [
         "libs/swapi/planets-overview/planets-overview-details/ui/src/index.ts"
       ],
-      "@swapi-app/swapi/planets-overview/planets-overview-favourites-list": [
-        "libs/swapi/planets-overview/planets-overview-favourites-list/src/index.ts"
+      "@swapi-app/swapi/planets-overview/data-access": [
+        "libs/swapi/planets-overview/data-access/src/index.ts"
+      ],
+      "@swapi-app/swapi/planets-overview/planets-overview-lists/planets-overview-favourites-list/feature": [
+        "libs/swapi/planets-overview/planets-overview-lists/planets-overview-favourites-list/feature/src/index.ts"
       ]
     }
   },

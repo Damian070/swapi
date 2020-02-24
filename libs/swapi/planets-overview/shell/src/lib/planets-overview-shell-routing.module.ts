@@ -21,7 +21,7 @@ const routes: Routes = [
         resolve: { planets: PlanetsOverviewListResolver },
         loadChildren: () =>
           import(
-            '@swapi-app/swapi/planets-overview/planets-overview-list/feature'
+            '@swapi-app/swapi/planets-overview/planets-overview-lists/planets-overview-list/feature'
           ).then(m => m.PlanetsOverviewListDataListModule)
       },
       {
@@ -31,6 +31,29 @@ const routes: Routes = [
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-details/feature'
           ).then(m => m.PlanetsOverviewDetailsModule)
+      }
+    ]
+  },
+  {
+    path: 'favourites',
+    component: PlanetsOverviewContainerComponent,
+    children: [
+      {
+        path: '',
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        resolve: { planets: PlanetsOverviewListResolver },
+        loadChildren: () =>
+          import(
+            '@swapi-app/swapi/planets-overview/planets-overview-lists/planets-overview-favourites-list/feature'
+            ).then(m => m.PlanetsOverviewFavouritesListDataListModule)
+      },
+      {
+        path: 'details/:planetId',
+        resolve: { planetDetails: PlanetsOverviewDetailsResolver },
+        loadChildren: () =>
+          import(
+            '@swapi-app/swapi/planets-overview/planets-overview-details/feature'
+            ).then(m => m.PlanetsOverviewDetailsModule)
       }
     ]
   }

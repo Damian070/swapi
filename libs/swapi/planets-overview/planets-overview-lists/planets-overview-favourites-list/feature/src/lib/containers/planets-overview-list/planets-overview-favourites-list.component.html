@@ -1,0 +1,13 @@
+<ui-overview-list-table
+  [favouritesConfig]="true"
+  [planets]="chunkedFavPlanets[currentPage]"
+  (togglePlanetsFavouriteStatus)="onTogglePlanetsFavouriteStatus($event)"
+></ui-overview-list-table>
+
+<ui-overview-list-pagination
+  [favouritesConfig]="true"
+  *ngIf="chunkedFavPlanets.length > 1"
+  (navigateCurrentPage)="onNavigateCurrentPage($event)"
+  [count]="pagesCount"
+>
+</ui-overview-list-pagination>

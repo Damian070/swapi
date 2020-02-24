@@ -18,10 +18,10 @@
       "tags": [],
       "implicitDependencies": ["swapi-app"]
     },
-    "swapi-planets-overview-planets-overview-list-feature": {
+    "swapi-planets-overview-planets-overview-lists-planets-overview-list-feature": {
       "tags": []
     },
-    "swapi-planets-overview-planets-overview-list-data-access": {
+    "swapi-planets-overview-data-access": {
       "tags": []
     },
     "swapi-planets-overview-planets-overview-details-feature": {
@@ -36,10 +36,10 @@
     "swapi-planets-overview-domain": {
       "tags": []
     },
-    "swapi-planets-overview-planets-overview-list-ui-ui-overview-list-table": {
+    "swapi-planets-overview-planets-overview-lists-shared-ui-ui-overview-list-table": {
       "tags": []
     },
-    "swapi-planets-overview-planets-overview-list-ui-ui-planets-overview-list-pagination-ui-overview-list-pagination": {
+    "swapi-planets-overview-planets-overview-lists-shared-ui-ui-planets-overview-list-pagination-ui-overview-list-pagination": {
       "tags": []
     },
     "swapi-shared-ui-bottom-sheet-message": {
@@ -51,7 +51,7 @@
     "swapi-planets-overview-planets-overview-details-ui": {
       "tags": []
     },
-    "swapi-planets-overview-planets-overview-favourites-list": {
+    "swapi-planets-overview-planets-overview-lists-planets-overview-favourites-list-feature": {
       "tags": []
     }
   }
