@@ -33,7 +33,10 @@ export const initialState: planetsListInterface = {
   count: 0,
   page: 1,
   error: null,
-  loading: false
+  loading: false,
+  detailsLoading: false,
+  planetDetails: null,
+  detailsError: null
 };
 
 export interface PlanetsPartialState {
@@ -108,6 +111,36 @@ export function reducer(
         count: action.payload['count'],
         page: action.payload['page'],
         planets: planetsAdapter.addAll(extractedIdsPayload, state.planets)
+      };
+
+      break;
+    }
+
+    case fromPlanetsActions.Types.LoadPlanetDetails: {
+      state = {
+        ...state,
+        loading: true,
+        error: null
+      };
+
+      break;
+    }
+
+    case fromPlanetsActions.Types.LoadPlanetDetailsFailure: {
+      state = {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+
+      break;
+    }
+
+    case fromPlanetsActions.Types.LoadPlanetDetailsSuccess: {
+      state = {
+        ...state,
+        loading: false,
+        planetDetails: action.payload
       };
 
       break;

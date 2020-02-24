@@ -58,3 +58,19 @@ export const getFavouritePlanetsArray = createSelector(
   getPlanetsState,
   (state: planetsListInterface) => selectAll(state.favouritePlanets)
 );
+
+export const getPlanetsDetails = createSelector(
+  getPlanetsState,
+  (state: planetsListInterface) => state.planetDetails
+);
+
+export const getPlanetsDetailsLoading = createSelector(
+  getPlanetsState,
+  (state: planetsListInterface) => state.loading
+);
+
+export const getPlanetsDetailsError = createSelector(
+  getPlanetsState,
+  (state: planetsListInterface) => state.error
+);
+

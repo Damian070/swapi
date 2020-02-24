@@ -7,7 +7,7 @@ import { PlanetsOverviewListResolver } from './resolvers/planets-overview-list-r
 import { PlanetsFacade } from '@swapi-app/swapi/planets-overview/data-access';
 import { UiHeaderModule } from '@swapi-app/swapi/shared/ui-header';
 import { PlanetsOverviewDetailsResolver } from './resolvers/planets-overview-details-resolver';
-import { PlanetsDetailsFacade } from '@swapi-app/swapi/planets-overview/planets-overview-details/data-access';
+import { PlanetsDetailsFacade } from '@swapi-app/swapi/planets-overview/data-access';
 
 @NgModule({
   declarations: [PlanetsOverviewContainerComponent],

@@ -5,7 +5,6 @@ import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain
 import * as fromPlanets from './planets.reducer';
 import * as PlanetsSelectors from './planets.selectors';
 import { fromPlanetsActions } from './planets.actions';
-import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
 
 @Injectable()
 export class PlanetsFacade {
@@ -23,17 +22,17 @@ export class PlanetsFacade {
 
   constructor(private store: Store<fromPlanets.PlanetsPartialState>) {}
 
-  togglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface) {
+  togglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface):void {
     this.store.dispatch(
       new fromPlanetsActions.TogglePlanetsFavouriteStatus(planetsDetails)
     );
   }
 
-  getFavouritePlanets() {
+  getFavouritePlanets():void {
     this.store.dispatch(new fromPlanetsActions.LoadPlanetsFavourites());
   }
 
-  getPlanets(page: number = 1) {
+  getPlanets(page: number = 1):void {
     this.store.dispatch(new fromPlanetsActions.LoadPlanets(page));
   }
 }

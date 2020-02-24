@@ -11,7 +11,10 @@ export namespace fromPlanetsActions {
     LoadPlanetsFail = '[Planets List] Load Planets Fail',
     TogglePlanetsFavouriteStatus = '[Planets List] Toggle Planets Favourite Status',
     LoadPlanetsFavourites = '[Planets List] Load Planets Favourites',
-    LoadPlanetsFavouritesSuccess = '[Planets List] Load Planets Favourites Success'
+    LoadPlanetsFavouritesSuccess = '[Planets List] Load Planets Favourites Success',
+    LoadPlanetDetails = '[Planet Details] Load PlanetDetails',
+    LoadPlanetDetailsSuccess = '[Planet Details] Load PlanetDetails Success',
+    LoadPlanetDetailsFailure = '[Planet Details] Load planetDetails Failure'
   }
 
   export class TogglePlanetsFavouriteStatus implements Action {
@@ -48,11 +51,32 @@ export namespace fromPlanetsActions {
     constructor(public payload: HttpErrorResponse) {}
   }
 
+  export class LoadPlanetDetails implements Action {
+    readonly type = Types.LoadPlanetDetails;
+
+    constructor(public payload: number) {}
+  }
+
+  export class LoadPlanetSuccess implements Action {
+    readonly type = Types.LoadPlanetDetailsSuccess;
+
+    constructor(public payload: planetDetailsInterface) {}
+  }
+
+  export class LoadPlanetFailure implements Action {
+    readonly type = Types.LoadPlanetDetailsFailure;
+
+    constructor(public payload: HttpErrorResponse | null) {}
+  }
+
   export type CollectiveType =
     | LoadPlanetsFavourites
     | LoadPlanetsFavouritesSuccess
     | TogglePlanetsFavouriteStatus
     | LoadPlanets
     | LoadPlanetsFail
-    | LoadPlanetsSuccess;
+    | LoadPlanetsSuccess
+    | LoadPlanetDetails
+    | LoadPlanetFailure
+    | LoadPlanetSuccess;;
 }

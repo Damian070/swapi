@@ -32,8 +32,9 @@
     <td mat-cell *matCellDef="let element">
 
       <mat-icon *ngIf="!favouritesConfig" (click)="onTogglePlanetsFavouriteStatus(element)">{{
-        faves.includes(json.stringify(element)) ? 'star' : 'star_border'
-      }}</mat-icon>
+        favesMap[element.name] ? 'star' : 'star_border'
+        }}</mat-icon>
+
 
       <mat-icon *ngIf="favouritesConfig" (click)="onTogglePlanetsFavouriteStatus(element)">star</mat-icon>
 

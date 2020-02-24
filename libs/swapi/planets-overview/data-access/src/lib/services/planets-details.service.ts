@@ -13,11 +13,6 @@ export class PlanetsDetailsService {
   path = 'https://swapi.co/api/planets/';
 
   getPlanetsDetails(id: number): Observable<any> {
-    return this.http.get<planetDetailsInterface>(`${this.path}${id}`).pipe(
-      tap(console.log),
-      // withLatestFrom(planetsDetails => this.http.get(planetsDetails.residents[0])),
-      tap(console.log)
-      // withLatestFrom(planetsDetails => this.http.get(planetsDetails.residents))
-    );
+    return this.http.get<planetDetailsInterface>(`${this.path}${id}`);
   }
 }

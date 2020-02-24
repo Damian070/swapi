@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { PlanetsDetailsFacade } from '@swapi-app/swapi/planets-overview/planets-overview-details/data-access';
+import { PlanetsDetailsFacade } from '@swapi-app/swapi/planets-overview/data-access';
+import {planetDetailsInterface} from "@swapi-app/swapi/planets-overview/domain";
 
 @Component({
   selector: 'planets-overview-details',
@@ -12,6 +13,11 @@ export class PlanetsOverviewDetailsComponent implements OnInit {
   planetsDetails$ = this.facade.planetsDetails$;
   error$ = this.facade.error$;
   loading$ = this.facade.loading$;
+  favourites$ = this.facade.favourites$;
+
+  onTogglePlanetsFavouriteStatus(planetDetails: planetDetailsInterface): void {
+    this.facade.togglePlanetsFavouriteStatus(planetDetails)
+  }
 
   constructor(private facade: PlanetsDetailsFacade) {}
 

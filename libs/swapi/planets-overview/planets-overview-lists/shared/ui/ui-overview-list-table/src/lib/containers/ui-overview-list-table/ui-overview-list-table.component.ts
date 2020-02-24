@@ -24,7 +24,10 @@ export class UiOverviewListTableComponent {
   @Input() favouritesConfig?;
   @Input() loading: boolean;
   @Input() set favouritePlanets(faves: planetDetailsInterface[]) {
-    this.faves = JSON.stringify(faves);
+    this.favesMap = {};
+    faves.forEach(
+      fav => this.favesMap[fav.name] = fav.name
+    );
   }
   @Input() set error(error: HttpErrorResponse | null) {
     this.httpError = error;
@@ -43,7 +46,7 @@ export class UiOverviewListTableComponent {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  faves;
+  favesMap: object = {};
 
   httpError: HttpErrorResponse | null;
 
@@ -56,11 +59,7 @@ export class UiOverviewListTableComponent {
   ];
   dataSource: MatTableDataSource<planetDetailsInterface>;
 
-  json;
-
-  constructor(private _bottomSheet: MatBottomSheet) {
-    this.json = JSON;
-  }
+  constructor(private _bottomSheet: MatBottomSheet) {}
 
   onTogglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface): void {
     this.togglePlanetsFavouriteStatus.emit(planetsDetails);

@@ -19,8 +19,21 @@ export class UiPlanetsOverviewDetailsCardComponent implements OnInit {
   @Input() planetDetails: planetDetailsInterface;
   @Input() error: null | HttpErrorResponse;
   @Input() loading: boolean;
+  @Input() set favourites(faves: planetDetailsInterface[]) {
+    this.favesMap = {};
 
-  @Output() toggleFavouriteStatus: EventEmitter<boolean>;
+    faves.forEach(
+      ({name}) => {this.favesMap[name] = name}
+    )
+  }
+
+  @Output() toggleFavouriteStatus: EventEmitter<planetDetailsInterface>= new EventEmitter<planetDetailsInterface>();
+
+  favesMap: object;
+
+  onClickToggleFavStatus() {
+    this.toggleFavouriteStatus.emit(this.planetDetails);
+  }
 
   constructor() {}
 

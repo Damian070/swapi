@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { EMPTY, Observable } from 'rxjs';
+import {EMPTY, Observable, of} from 'rxjs';
 
 import { PlanetsFacade } from '@swapi-app/swapi/planets-overview/data-access';
 
 @Injectable()
-export class PlanetsOverviewListResolver implements Resolve<Observable<any>> {
+export class PlanetsOverviewListResolver implements Resolve<Observable<null>> {
   constructor(private facade: PlanetsFacade) {}
 
   resolve(route: ActivatedRouteSnapshot) {
     this.facade.getPlanets(route.queryParams.page || 1);
     this.facade.getFavouritePlanets();
 
-    return EMPTY;
+    return of(null);
   }
 }

@@ -3,22 +3,22 @@ import { Actions, ofType, Effect } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { fromPlanetsDetailsActions } from './planets-details.actions';
+import { fromPlanetsActions } from './planets.actions';
 import { PlanetsDetailsService } from '../services/planets-details.service';
 
 @Injectable()
 export class PlanetsDetailsEffects {
   @Effect()
   loadPlanetsDetails$ = this.actions$.pipe(
-    ofType(fromPlanetsDetailsActions.Types.LoadPlanetsDetails),
-    mergeMap((action: fromPlanetsDetailsActions.LoadPlanetsDetails) =>
+    ofType(fromPlanetsActions.Types.LoadPlanetDetails),
+    mergeMap((action: fromPlanetsActions.LoadPlanetDetails) =>
       this.apiService.getPlanetsDetails(action.payload).pipe(
         map(
           planetsDetails =>
-            new fromPlanetsDetailsActions.LoadPlanetsSuccess(planetsDetails)
+            new fromPlanetsActions.LoadPlanetSuccess(planetsDetails)
         ),
         catchError(err =>
-          of(new fromPlanetsDetailsActions.LoadPlanetsFailure(err))
+          of(new fromPlanetsActions.LoadPlanetFailure(err))
         )
       )
     )
