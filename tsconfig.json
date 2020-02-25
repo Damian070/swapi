@@ -51,8 +51,7 @@
       ],
       "@swapi-app/swapi/planets-overview/planets-overview-lists/planets-overview-favourites-list/feature": [
         "libs/swapi/planets-overview/planets-overview-lists/planets-overview-favourites-list/feature/src/index.ts"
-      ],
-      "@swapi-app/swapi/shared/util": ["libs/swapi/shared/util/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

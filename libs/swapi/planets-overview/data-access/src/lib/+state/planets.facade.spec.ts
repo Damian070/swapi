@@ -21,6 +21,7 @@ import {PlanetsOverviewListDataAccessService} from "../services/planets-overview
 
 import {createSpyObj} from 'jest-createspyobj';
 import {PlanetsDetailsService} from "../services/planets-details.service";
+import {PlanetsDetailsEffects} from "@swapi-app/swapi/planets-overview/data-access";
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -36,7 +37,7 @@ describe('PlanetsFacade', () => {
       @NgModule({
         imports: [
           StoreModule.forFeature(PLANETS_FEATURE_KEY, reducer, { initialState }),
-          EffectsModule.forFeature([PlanetsEffects])
+          EffectsModule.forFeature([PlanetsEffects, PlanetsDetailsEffects])
         ],
         providers: [PlanetsFacade,{
           provide: PlanetsOverviewListDataAccessService,

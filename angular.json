@@ -471,32 +471,6 @@
           }
         }
       }
-    },
-    "swapi-shared-util": {
-      "root": "libs/swapi/shared/util",
-      "sourceRoot": "libs/swapi/shared/util/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/swapi/shared/util/tsconfig.lib.json",
-              "libs/swapi/shared/util/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/swapi/shared/util/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/swapi/shared/util/jest.config.js",
-            "tsConfig": "libs/swapi/shared/util/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
     }
   },
   "cli": {

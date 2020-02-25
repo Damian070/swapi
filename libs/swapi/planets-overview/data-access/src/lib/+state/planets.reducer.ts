@@ -6,7 +6,6 @@ import {
   PlanetDetailsInterface,
   PlanetsListInterface
 } from '@swapi-app/swapi/planets-overview/domain';
-import { extractId } from '@swapi-app/swapi/shared/util';
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
@@ -30,6 +29,16 @@ export const initialState: PlanetsListInterface = {
   planetDetails: null,
   detailsError: null
 };
+
+function extractId(planetInfo: PlanetDetailsInterface) {
+  let url = planetInfo.url;
+  if (url) {
+    if (url[url.length - 1] === '/') url = url.substring(0, url.length - 1);
+    url = url.slice(url.lastIndexOf('/') + 1);
+    return { ...planetInfo, url };
+  } else return planetInfo;
+}
+
 
 export interface PlanetsPartialState {
   readonly [PLANETS_FEATURE_KEY]: PlanetsListInterface;
