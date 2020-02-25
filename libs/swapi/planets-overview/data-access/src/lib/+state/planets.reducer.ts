@@ -50,6 +50,9 @@ export function reducer(
 ) {
   switch (action.type) {
     case fromPlanetsActions.Types.LoadPlanetsFavouritesSuccess: {
+
+      if(! action.payload) break;
+
       state = {
         ...state,
         favouritePlanets: planetsAdapter.addAll(
