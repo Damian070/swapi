@@ -5,12 +5,9 @@ import { fromPlanetsActions } from './planets.actions';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
 import {
   catchError,
-  first,
   map,
   mergeMap,
-  pluck,
   switchMap,
-  take,
   tap,
   withLatestFrom
 } from 'rxjs/operators';

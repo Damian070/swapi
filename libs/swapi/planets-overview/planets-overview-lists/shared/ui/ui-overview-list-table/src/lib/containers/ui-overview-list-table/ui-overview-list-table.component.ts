@@ -34,8 +34,6 @@ export class UiOverviewListTableComponent {
     error && this.triggerBottomSheet(error);
   }
   @Input() set planets(planets: planetDetailsInterface[]) {
-
-    console.log(planets);
     this.dataSource = new MatTableDataSource<planetDetailsInterface>(planets);
     this.dataSource.sort = this.sort;
   }

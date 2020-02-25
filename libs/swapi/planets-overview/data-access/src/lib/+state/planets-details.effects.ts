@@ -15,10 +15,10 @@ export class PlanetsDetailsEffects {
       this.apiService.getPlanetsDetails(action.payload).pipe(
         map(
           planetsDetails =>
-            new fromPlanetsActions.LoadPlanetSuccess(planetsDetails)
+            new fromPlanetsActions.LoadPlanetDetailsSuccess(planetsDetails)
         ),
         catchError(err =>
-          of(new fromPlanetsActions.LoadPlanetFailure(err))
+          of(new fromPlanetsActions.LoadPlanetDetailsFailure(err))
         )
       )
     )

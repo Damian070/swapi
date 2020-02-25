@@ -1,0 +1,66 @@
+{
+  "numFailedTestSuites": 1,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 0,
+  "numPassedTests": 0,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 1,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 1,
+  "numTotalTests": 0,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1582621457546,
+  "success": false,
+  "testResults": [
+    {
+      "displayName": "",
+      "failureMessage": "  \u001b[1m● \u001b[22mTest suite failed to run\n\n    TypeScript diagnostics (customize using `[jest-config].globals.ts-jest.diagnostics` option):\n    \u001b[96mapps/swapi-app/src/app/app.component.spec.ts\u001b[0m:\u001b[93m20\u001b[0m:\u001b[93m16\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'title' does not exist on type 'AppComponent'.\n\n    \u001b[7m20\u001b[0m     expect(app.title).toEqual('swapi-app');\n    \u001b[7m  \u001b[0m \u001b[91m               ~~~~~\u001b[0m\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 0,
+        "start": 0
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testExecError": {
+        "diagnosticText": "\u001b[96mapps/swapi-app/src/app/app.component.spec.ts\u001b[0m:\u001b[93m20\u001b[0m:\u001b[93m16\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'title' does not exist on type 'AppComponent'.\n\n\u001b[7m20\u001b[0m     expect(app.title).toEqual('swapi-app');\n\u001b[7m  \u001b[0m \u001b[91m               ~~~~~\u001b[0m\n",
+        "diagnosticCodes": [
+          2339
+        ]
+      },
+      "testFilePath": "/home/damian/WebstormProjects/swapi/swapi-app/apps/swapi-app/src/app/app.component.spec.ts",
+      "testResults": []
+    }
+  ],
+  "wasInterrupted": false
+}

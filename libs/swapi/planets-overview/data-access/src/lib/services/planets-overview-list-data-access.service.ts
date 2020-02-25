@@ -17,7 +17,6 @@ export class PlanetsOverviewListDataAccessService {
   }
 
   updateFavesLocalStorage(favesPlanetsList: planetDetailsInterface[]) {
-    // console.log('updateFavesLocalStorage run');
     const jsonPlanets = JSON.stringify(favesPlanetsList);
     localStorage.setItem('favePlanets', jsonPlanets);
   }

@@ -41,8 +41,6 @@ export class PlanetsOverviewFavouritesListComponent implements OnInit {
 
   onNavigateCurrentPage(newCurrent: number) {
     this.currentPage = newCurrent;
-    console.log(this.currentPage)
-    console.log(this.chunkedFavPlanets[this.currentPage])
   }
 
   ngOnInit(): void {

@@ -1,43 +1,47 @@
-// import { TestBed, async } from '@angular/core/testing';
-//
-// import { Observable } from 'rxjs';
-//
-// import { provideMockActions } from '@ngrx/effects/testing';
-// import { provideMockStore } from '@ngrx/store/testing';
-//
-// import { NxModule, DataPersistence } from '@nrwl/angular';
-// import { hot } from '@nrwl/angular/testing';
-//
-// import { PlanetsEffects } from './planets.effects';
-// import * as PlanetsActions from './planets.actions';
-//
-// describe('PlanetsEffects', () => {
-//   let actions: Observable<any>;
-//   let effects: PlanetsEffects;
-//
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       imports: [NxModule.forRoot()],
-//       providers: [
-//         PlanetsEffects,
-//         DataPersistence,
-//         provideMockActions(() => actions),
-//         provideMockStore()
-//       ]
-//     });
-//
-//     effects = TestBed.get(PlanetsEffects);
-//   });
-//
-//   describe('loadPlanets$', () => {
-//     it('should work', () => {
-//       actions = hot('-a-|', { a: PlanetsActions.loadPlanets() });
-//
-//       const expected = hot('-a-|', {
-//         a: PlanetsActions.loadPlanetsSuccess({ planets: [] })
-//       });
-//
-//       expect(effects.loadPlanets$).toBeObservable(expected);
-//     });
-//   });
-// });
+import {PlanetsEffects} from "./planets.effects";
+import {PlanetsDetailsService} from "../services/planets-details.service";
+import {Observable} from "rxjs";
+import {TestBed} from "@angular/core/testing";
+import {provideMockActions} from "@ngrx/effects/testing";
+import {provideMockStore} from "@ngrx/store/testing";
+import {initialState} from "@swapi-app/swapi/planets-overview/data-access";
+import {PlanetsOverviewListDataAccessService} from "../services/planets-overview-list-data-access.service";
+
+
+describe('UserEffects', () => {
+  let actions$: Observable<any>;
+  let effects: PlanetsEffects;
+  let planetsDetailsService: PlanetsDetailsService;
+  let planetsListService: PlanetsOverviewListDataAccessService
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        PlanetsEffects,
+        provideMockActions(() => actions$),
+        provideMockStore({initialState}),
+        {
+          provide: PlanetsDetailsService,
+          useValue: {
+            getPlanetsDetails: jest.fn()
+          }
+        },
+        {
+          provide: PlanetsOverviewListDataAccessService,
+          useValue: {
+            getPlanets: jest.fn(),
+            updateFavesLocalStorage: jest.fn(),
+            loadFavesLocalStorage: jest.fn()
+          }
+        }
+      ]
+    });
+
+    effects = TestBed.get(PlanetsEffects);
+    planetsDetailsService= TestBed.get(planetsDetailsService);
+  });
+
+  it.skip('should be created', () => {
+    expect(effects).toBeTruthy();
+  });
+});

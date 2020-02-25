@@ -13,9 +13,6 @@ export class PlanetsFacade {
   error$ = this.store.pipe(select(PlanetsSelectors.getPlanetsError));
   page$ = this.store.pipe(select(PlanetsSelectors.getPlanetsPage));
   count$ = this.store.pipe(select(PlanetsSelectors.getPlanetsCount));
-  favouritePlanets$ = this.store.pipe(
-    select(PlanetsSelectors.getFavouritePlanets)
-  );
   favouritePlanetsArray$ = this.store.pipe(
     select(PlanetsSelectors.getFavouritePlanetsArray)
   );

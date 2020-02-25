@@ -44,11 +44,6 @@ export const getAllPlanets = createSelector(
   (state: planetsListInterface) => selectAll(state.planets)
 );
 
-export const getFavouritePlanets = createSelector(
-  getPlanetsState,
-  (state: planetsListInterface) => selectAll(state.favouritePlanets)
-);
-
 export const getFavouritePlanetsBranch = createSelector(
   getPlanetsState,
   (state: planetsListInterface) => state.favouritePlanets

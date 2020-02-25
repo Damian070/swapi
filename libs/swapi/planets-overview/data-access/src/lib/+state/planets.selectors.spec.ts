@@ -1,62 +1,114 @@
-// import { PlanetsEntity } from './planets.models';
-// import { State, planetsAdapter, initialState } from './planets.reducer';
-// import * as PlanetsSelectors from './planets.selectors';
-//
-// describe('Planets Selectors', () => {
-//   const ERROR_MSG = 'No Error Available';
-//   const getPlanetsId = it => it['id'];
-//   const createPlanetsEntity = (id: string, name = '') =>
-//     ({
-//       id,
-//       name: name || `name-${id}`
-//     } as PlanetsEntity);
-//
-//   let state;
-//
-//   beforeEach(() => {
-//     state = {
-//       planets: planetsAdapter.addAll(
-//         [
-//           createPlanetsEntity('PRODUCT-AAA'),
-//           createPlanetsEntity('PRODUCT-BBB'),
-//           createPlanetsEntity('PRODUCT-CCC')
-//         ],
-//         {
-//           ...initialState,
-//           selectedId: 'PRODUCT-BBB',
-//           error: ERROR_MSG,
-//           loaded: true
-//         }
-//       )
-//     };
-//   });
-//
-//   describe('Planets Selectors', () => {
-//     it('getAllPlanets() should return the list of Planets', () => {
-//       const results = PlanetsSelectors.getAllPlanets(state);
-//       const selId = getPlanetsId(results[1]);
-//
-//       expect(results.length).toBe(3);
-//       expect(selId).toBe('PRODUCT-BBB');
-//     });
-//
-//     it('getSelected() should return the selected Entity', () => {
-//       const result = PlanetsSelectors.getSelected(state);
-//       const selId = getPlanetsId(result);
-//
-//       expect(selId).toBe('PRODUCT-BBB');
-//     });
-//
-//     it("getPlanetsLoaded() should return the current 'loaded' status", () => {
-//       const result = PlanetsSelectors.getPlanetsLoaded(state);
-//
-//       expect(result).toBe(true);
-//     });
-//
-//     it("getPlanetsError() should return the current 'error' state", () => {
-//       const result = PlanetsSelectors.getPlanetsError(state);
-//
-//       expect(result).toBe(ERROR_MSG);
-//     });
-//   });
-// });
+import { planetsAdapter, PlanetsEntitiesState} from './planets.reducer';
+import * as PlanetsSelectors from './planets.selectors';
+import {planetDetailsInterface, planetsListInterface } from "@swapi-app/swapi/planets-overview/domain";
+import {mockPlanet} from "./tests-assets/mockPlanet";
+
+describe('Planets Selectors', () => {
+  const createMockPlanetDetails= (name) => {
+    return {...mockPlanet, name, id: name} as planetDetailsInterface
+  };
+
+  let state: {planets: planetsListInterface};
+  const planetsArray: planetDetailsInterface[] = [
+      createMockPlanetDetails('a'),
+      createMockPlanetDetails('b'),
+      createMockPlanetDetails('c')
+    ],
+    favouritePlanetsArray: planetDetailsInterface[] = [
+        createMockPlanetDetails('a_fav'),
+        createMockPlanetDetails('b_fav')
+    ],
+    planets: PlanetsEntitiesState = planetsAdapter.addAll(planetsArray, {
+    ids: [],
+    entities: {}
+  }),
+    favouritePlanets: PlanetsEntitiesState = planetsAdapter.addAll(favouritePlanetsArray, {
+      ids: [],
+      entities: {}
+    }),
+    mockPlanetDetails: planetDetailsInterface = createMockPlanetDetails('a');
+
+  beforeEach(() => {
+    state = {planets : {
+       planets,
+        favouritePlanets,
+        count: 0,
+        page: 1,
+        error: null,
+        loading: false,
+        detailsLoading: false,
+        planetDetails: mockPlanetDetails,
+        detailsError: null
+    }}
+  });
+
+
+  it('PlanetsSelectors.getAllPlanets', () => {
+      const selection = PlanetsSelectors.getAllPlanets(state);
+
+      expect(selection.length).toBe(3);
+      expect(selection).toEqual(planetsArray);
+  });
+
+    it('PlanetsSelectors.getFavouritePlanetsArray', () => {
+      const selection = PlanetsSelectors.getFavouritePlanetsArray(state);
+
+      expect(selection.length).toBe(2);
+      expect(selection).toEqual(favouritePlanetsArray);
+    });
+
+    it('PlanetsSelectors.getPlanetsDetails', () => {
+      const selection = PlanetsSelectors.getPlanetsDetails(state);
+
+      expect(selection).toEqual(mockPlanetDetails);
+    });
+
+    it('PlanetsSelectors.getFavouritePlanetsBranch', () => {
+      const selection = PlanetsSelectors.getFavouritePlanetsBranch(state);
+
+      expect(selection).toEqual(favouritePlanets);
+    });
+
+  it('PlanetsSelectors.getPlanetsCount', () => {
+    const selection = PlanetsSelectors.getPlanetsCount(state);
+
+    expect(selection).toEqual(state.planets.count);
+  });
+
+  it('PlanetsSelectors.getPlanetsDetailsLoading', () => {
+    const selection = PlanetsSelectors.getPlanetsDetailsLoading(state);
+
+    expect(selection).toEqual(state.planets.detailsLoading);
+  });
+
+  it('PlanetsSelectors.getPlanetsError', () => {
+    const selection = PlanetsSelectors.getPlanetsError(state);
+
+    expect(selection).toEqual(state.planets.error);
+  });
+
+  it('PlanetsSelectors.getPlanetsPage', () => {
+    const selection = PlanetsSelectors.getPlanetsPage(state);
+
+    expect(selection).toEqual(state.planets.page);
+  });
+
+  it('PlanetsSelectors.getFavouritePlanetsState', () => {
+    const selection = PlanetsSelectors.getFavouritePlanetsState(state);
+
+    expect(selection).toEqual(state.planets.favouritePlanets);
+  });
+
+  it('PlanetsSelectors.getPlanetsLoading', () => {
+    const selection = PlanetsSelectors.getPlanetsLoading(state);
+
+    expect(selection).toEqual(state.planets.loading);
+  });
+
+  it('PlanetsSelectors.getPlanetsDetailsError', () => {
+    const selection = PlanetsSelectors.getPlanetsDetailsError(state);
+
+    expect(selection).toEqual(state.planets.loading);
+  });
+
+});

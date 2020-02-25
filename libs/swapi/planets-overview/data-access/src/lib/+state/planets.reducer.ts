@@ -1,29 +1,17 @@
-import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
+import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 
-import { fromPlanetsActions } from './planets.actions';
+import {fromPlanetsActions} from './planets.actions';
 
-import {
-  planetsListInterface,
-  planetDetailsInterface
-} from '@swapi-app/swapi/planets-overview/domain';
+import {planetDetailsInterface, planetsListInterface} from '@swapi-app/swapi/planets-overview/domain';
+import {extractId} from "@swapi-app/swapi/shared/util";
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
-function extractId(planetInfo) {
-  if (planetInfo.url) {
-    let url = planetInfo.url;
-    url = url.substring(0, url.length - 1);
-    url = url.slice(url.lastIndexOf('/') + 1);
-    return { ...planetInfo, url };
-  } else return planetInfo;
+export interface PlanetsEntitiesState
+  extends EntityState<planetDetailsInterface> {
 }
 
-export interface PlanetsEntitiesState
-  extends EntityState<planetDetailsInterface> {}
-
-export const planetsAdapter: EntityAdapter<
-  planetDetailsInterface
-> = createEntityAdapter<planetDetailsInterface>({
+export const planetsAdapter: EntityAdapter<planetDetailsInterface> = createEntityAdapter<planetDetailsInterface>({
   selectId: model => model.name
 });
 
@@ -49,7 +37,6 @@ export function reducer(
 ) {
   switch (action.type) {
     case fromPlanetsActions.Types.LoadPlanetsFavouritesSuccess: {
-      console.log(action);
 
       state = {
         ...state,
@@ -63,18 +50,16 @@ export function reducer(
     }
 
     case fromPlanetsActions.Types.TogglePlanetsFavouriteStatus: {
-      const alreadyInFlag: boolean = state.favouritePlanets.ids.includes(
-        // @ts-ignore
-        action.payload.name
-      );
+      const name = action.payload.name;
+      const alreadyInFlag: boolean = state.favouritePlanets.ids.some(planetName => planetName === name);
 
       state = {
         ...state,
         favouritePlanets: alreadyInFlag
           ? planetsAdapter.removeOne(
-              action.payload.name,
-              state.favouritePlanets
-            )
+            action.payload.name,
+            state.favouritePlanets
+          )
           : planetsAdapter.addOne(action.payload, state.favouritePlanets)
       };
 
@@ -108,8 +93,8 @@ export function reducer(
       state = {
         ...state,
         loading: false,
-        count: action.payload['count'],
-        page: action.payload['page'],
+        count: action.payload.count,
+        page: action.payload.page,
         planets: planetsAdapter.addAll(extractedIdsPayload, state.planets)
       };
 
