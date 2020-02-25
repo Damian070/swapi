@@ -30,16 +30,23 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
     <td mat-cell *matCellDef="let element">
+      <mat-icon
+        *ngIf="!favouritesConfig"
+        (click)="onTogglePlanetsFavouriteStatus(element)"
+        >{{ favesMap[element.name] ? 'star' : 'star_border' }}</mat-icon
+      >
 
-      <mat-icon *ngIf="!favouritesConfig" (click)="onTogglePlanetsFavouriteStatus(element)">{{
-        favesMap[element.name] ? 'star' : 'star_border'
-        }}</mat-icon>
+      <mat-icon
+        *ngIf="favouritesConfig"
+        (click)="onTogglePlanetsFavouriteStatus(element)"
+        >star</mat-icon
+      >
 
-
-      <mat-icon *ngIf="favouritesConfig" (click)="onTogglePlanetsFavouriteStatus(element)">star</mat-icon>
-
-      <mat-icon *ngIf="element.url" [routerLink]="['/planets/details/' + element.url]"
-        >navigate_next</mat-icon>
+      <mat-icon
+        *ngIf="element.url"
+        [routerLink]="['/planets/details/' + element.url]"
+        >navigate_next</mat-icon
+      >
     </td>
   </ng-container>
 

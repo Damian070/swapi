@@ -18,7 +18,7 @@ import { getFavouritePlanetsArray } from './planets.selectors';
 
 import { PlanetsPartialState } from './planets.reducer';
 
-import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 @Injectable()
 export class PlanetsEffects {
@@ -52,7 +52,7 @@ export class PlanetsEffects {
         .loadFavesLocalStorage()
         .pipe(
           map(
-            (faves: planetDetailsInterface[]) =>
+            (faves: PlanetDetailsInterface[]) =>
               new fromPlanetsActions.LoadPlanetsFavouritesSuccess(faves)
           )
         )

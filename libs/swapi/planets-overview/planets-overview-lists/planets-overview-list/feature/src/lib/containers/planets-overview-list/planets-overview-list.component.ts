@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PlanetsFacade } from '@swapi-app/swapi/planets-overview/data-access';
 import { Observable } from 'rxjs';
 
-import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -13,17 +13,17 @@ import { HttpErrorResponse } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlanetsOverviewListComponent implements OnInit {
-  planets$: Observable<planetDetailsInterface[]> = this.facade.allPlanets$;
+  planets$: Observable<PlanetDetailsInterface[]> = this.facade.allPlanets$;
   error$: Observable<HttpErrorResponse | null> = this.facade.error$;
   loading$: Observable<boolean> = this.facade.loading$;
   count$: Observable<number> = this.facade.count$;
   page$: Observable<number> = this.facade.page$;
-  favouritePlanetsArray$: Observable<planetDetailsInterface[]> = this.facade
+  favouritePlanetsArray$: Observable<PlanetDetailsInterface[]> = this.facade
     .favouritePlanetsArray$;
 
   constructor(private facade: PlanetsFacade) {}
 
-  onTogglePlanetsFavouriteStatus(planetsDetails: planetDetailsInterface) {
+  onTogglePlanetsFavouriteStatus(planetsDetails: PlanetDetailsInterface) {
     this.facade.togglePlanetsFavouriteStatus(planetsDetails);
   }
 

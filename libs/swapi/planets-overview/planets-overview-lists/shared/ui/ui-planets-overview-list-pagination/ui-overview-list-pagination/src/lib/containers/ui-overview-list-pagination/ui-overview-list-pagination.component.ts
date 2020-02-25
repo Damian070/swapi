@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { PlanetsOverviewListComponentPresenter } from './ui-overview-list-pagination.presenter';
 
@@ -17,12 +17,15 @@ export class UiOverviewListPaginationComponent {
   pageNr;
   pageSize = 10;
 
-  @Output() navigateCurrentPage: EventEmitter<number> = new EventEmitter<number>();
+  @Output() navigateCurrentPage: EventEmitter<number> = new EventEmitter<
+    number
+  >();
 
   constructor(private presenter: PlanetsOverviewListComponentPresenter) {}
 
   navigateAndUpdateStateOnPageChange(e) {
-    if(this.favouritesConfig) return this.navigateCurrentPage.emit(e.pageIndex);
+    if (this.favouritesConfig)
+      return this.navigateCurrentPage.emit(e.pageIndex);
     this.presenter.navigate(Object.assign(e));
   }
 }

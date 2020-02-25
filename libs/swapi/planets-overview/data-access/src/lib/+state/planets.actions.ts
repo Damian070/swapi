@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 import { PlanetsEntitiesState } from './planets.reducer';
 
 export namespace fromPlanetsActions {
@@ -20,7 +20,7 @@ export namespace fromPlanetsActions {
   export class TogglePlanetsFavouriteStatus implements Action {
     readonly type = Types.TogglePlanetsFavouriteStatus;
 
-    constructor(public payload: planetDetailsInterface) {}
+    constructor(public payload: PlanetDetailsInterface) {}
   }
 
   export class LoadPlanetsFavourites implements Action {
@@ -30,7 +30,7 @@ export namespace fromPlanetsActions {
   export class LoadPlanetsFavouritesSuccess implements Action {
     readonly type = Types.LoadPlanetsFavouritesSuccess;
 
-    constructor(public payload: planetDetailsInterface[]) {}
+    constructor(public payload: PlanetDetailsInterface[]) {}
   }
 
   export class LoadPlanets implements Action {
@@ -42,7 +42,13 @@ export namespace fromPlanetsActions {
   export class LoadPlanetsSuccess implements Action {
     readonly type = Types.LoadPlanetsSuccess;
 
-    constructor(public payload: { results: planetDetailsInterface[], count: number, page: number }) {}
+    constructor(
+      public payload: {
+        results: PlanetDetailsInterface[];
+        count: number;
+        page: number;
+      }
+    ) {}
   }
 
   export class LoadPlanetsFail implements Action {
@@ -60,7 +66,7 @@ export namespace fromPlanetsActions {
   export class LoadPlanetDetailsSuccess implements Action {
     readonly type = Types.LoadPlanetDetailsSuccess;
 
-    constructor(public payload: planetDetailsInterface) {}
+    constructor(public payload: PlanetDetailsInterface) {}
   }
 
   export class LoadPlanetDetailsFailure implements Action {
@@ -78,5 +84,5 @@ export namespace fromPlanetsActions {
     | LoadPlanetsSuccess
     | LoadPlanetDetails
     | LoadPlanetDetailsFailure
-    | LoadPlanetDetailsSuccess;;
+    | LoadPlanetDetailsSuccess;
 }

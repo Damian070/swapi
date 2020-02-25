@@ -1,21 +1,25 @@
-import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-import {fromPlanetsActions} from './planets.actions';
+import { fromPlanetsActions } from './planets.actions';
 
-import {planetDetailsInterface, planetsListInterface} from '@swapi-app/swapi/planets-overview/domain';
-import {extractId} from "@swapi-app/swapi/shared/util";
+import {
+  PlanetDetailsInterface,
+  PlanetsListInterface
+} from '@swapi-app/swapi/planets-overview/domain';
+import { extractId } from '@swapi-app/swapi/shared/util';
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
 export interface PlanetsEntitiesState
-  extends EntityState<planetDetailsInterface> {
-}
+  extends EntityState<PlanetDetailsInterface> {}
 
-export const planetsAdapter: EntityAdapter<planetDetailsInterface> = createEntityAdapter<planetDetailsInterface>({
+export const planetsAdapter: EntityAdapter<
+  PlanetDetailsInterface
+> = createEntityAdapter<PlanetDetailsInterface>({
   selectId: model => model.name
 });
 
-export const initialState: planetsListInterface = {
+export const initialState: PlanetsListInterface = {
   planets: planetsAdapter.getInitialState(),
   favouritePlanets: planetsAdapter.getInitialState(),
   count: 0,
@@ -28,16 +32,15 @@ export const initialState: planetsListInterface = {
 };
 
 export interface PlanetsPartialState {
-  readonly [PLANETS_FEATURE_KEY]: planetsListInterface;
+  readonly [PLANETS_FEATURE_KEY]: PlanetsListInterface;
 }
 
 export function reducer(
-  state: planetsListInterface = initialState,
+  state: PlanetsListInterface = initialState,
   action: fromPlanetsActions.CollectiveType
 ) {
   switch (action.type) {
     case fromPlanetsActions.Types.LoadPlanetsFavouritesSuccess: {
-
       state = {
         ...state,
         favouritePlanets: planetsAdapter.addAll(
@@ -51,15 +54,17 @@ export function reducer(
 
     case fromPlanetsActions.Types.TogglePlanetsFavouriteStatus: {
       const name = action.payload.name;
-      const alreadyInFlag: boolean = state.favouritePlanets.ids.some(planetName => planetName === name);
+      const alreadyInFlag: boolean = state.favouritePlanets.ids.some(
+        planetName => planetName === name
+      );
 
       state = {
         ...state,
         favouritePlanets: alreadyInFlag
           ? planetsAdapter.removeOne(
-            action.payload.name,
-            state.favouritePlanets
-          )
+              action.payload.name,
+              state.favouritePlanets
+            )
           : planetsAdapter.addOne(action.payload, state.favouritePlanets)
       };
 

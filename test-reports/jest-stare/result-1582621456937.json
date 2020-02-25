@@ -54,9 +54,7 @@
       },
       "testExecError": {
         "diagnosticText": "\u001b[96mapps/swapi-app/src/app/app.component.spec.ts\u001b[0m:\u001b[93m20\u001b[0m:\u001b[93m16\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'title' does not exist on type 'AppComponent'.\n\n\u001b[7m20\u001b[0m     expect(app.title).toEqual('swapi-app');\n\u001b[7m  \u001b[0m \u001b[91m               ~~~~~\u001b[0m\n",
-        "diagnosticCodes": [
-          2339
-        ]
+        "diagnosticCodes": [2339]
       },
       "testFilePath": "/home/damian/WebstormProjects/swapi/swapi-app/apps/swapi-app/src/app/app.component.spec.ts",
       "testResults": []

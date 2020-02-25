@@ -6,7 +6,7 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import { planetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -16,18 +16,20 @@ import { HttpErrorResponse } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiPlanetsOverviewDetailsCardComponent implements OnInit {
-  @Input() planetDetails: planetDetailsInterface;
+  @Input() planetDetails: PlanetDetailsInterface;
   @Input() error: null | HttpErrorResponse;
   @Input() loading: boolean;
-  @Input() set favourites(faves: planetDetailsInterface[]) {
+  @Input() set favourites(faves: PlanetDetailsInterface[]) {
     this.favesMap = {};
 
-    faves.forEach(
-      ({name}) => {this.favesMap[name] = name}
-    )
+    faves.forEach(({ name }) => {
+      this.favesMap[name] = name;
+    });
   }
 
-  @Output() toggleFavouriteStatus: EventEmitter<planetDetailsInterface>= new EventEmitter<planetDetailsInterface>();
+  @Output() toggleFavouriteStatus: EventEmitter<
+    PlanetDetailsInterface
+  > = new EventEmitter<PlanetDetailsInterface>();
 
   favesMap: object;
 

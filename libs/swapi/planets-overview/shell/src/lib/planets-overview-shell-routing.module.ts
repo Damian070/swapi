@@ -45,7 +45,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-lists/planets-overview-favourites-list/feature'
-            ).then(m => m.PlanetsOverviewFavouritesListDataListModule)
+          ).then(m => m.PlanetsOverviewFavouritesListDataListModule)
       },
       {
         path: 'details/:planetId',
@@ -53,7 +53,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             '@swapi-app/swapi/planets-overview/planets-overview-details/feature'
-            ).then(m => m.PlanetsOverviewDetailsModule)
+          ).then(m => m.PlanetsOverviewDetailsModule)
       }
     ]
   }

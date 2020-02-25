@@ -5,67 +5,66 @@ import {
   planetsAdapter
 } from './planets.reducer';
 
-import { planetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 export const getPlanetsState = createFeatureSelector<
   PlanetsPartialState,
-  planetsListInterface
+  PlanetsListInterface
 >(PLANETS_FEATURE_KEY);
 
 const { selectAll } = planetsAdapter.getSelectors();
 
 export const getFavouritePlanetsState = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.favouritePlanets
+  (state: PlanetsListInterface) => state.favouritePlanets
 );
 
 export const getPlanetsLoading = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.loading
+  (state: PlanetsListInterface) => state.loading
 );
 
 export const getPlanetsError = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.error
+  (state: PlanetsListInterface) => state.error
 );
 
 export const getPlanetsCount = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.count
+  (state: PlanetsListInterface) => state.count
 );
 
 export const getPlanetsPage = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.page
+  (state: PlanetsListInterface) => state.page
 );
 
 export const getAllPlanets = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => selectAll(state.planets)
+  (state: PlanetsListInterface) => selectAll(state.planets)
 );
 
 export const getFavouritePlanetsBranch = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.favouritePlanets
+  (state: PlanetsListInterface) => state.favouritePlanets
 );
 
 export const getFavouritePlanetsArray = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => selectAll(state.favouritePlanets)
+  (state: PlanetsListInterface) => selectAll(state.favouritePlanets)
 );
 
 export const getPlanetsDetails = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.planetDetails
+  (state: PlanetsListInterface) => state.planetDetails
 );
 
 export const getPlanetsDetailsLoading = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.loading
+  (state: PlanetsListInterface) => state.loading
 );
 
 export const getPlanetsDetailsError = createSelector(
   getPlanetsState,
-  (state: planetsListInterface) => state.error
+  (state: PlanetsListInterface) => state.error
 );
-

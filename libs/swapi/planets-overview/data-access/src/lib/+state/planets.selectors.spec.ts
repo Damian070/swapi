@@ -1,36 +1,40 @@
-import { planetsAdapter, PlanetsEntitiesState} from './planets.reducer';
+import { planetsAdapter, PlanetsEntitiesState } from './planets.reducer';
 import * as PlanetsSelectors from './planets.selectors';
-import {planetDetailsInterface, planetsListInterface } from "@swapi-app/swapi/planets-overview/domain";
-import {mockPlanet} from "./tests-assets/mockPlanet";
+import {
+  PlanetDetailsInterface,
+  PlanetsListInterface
+} from '@swapi-app/swapi/planets-overview/domain';
+import { createMockPlanetDetails } from './tests-assets/mockPlanet';
 
 describe('Planets Selectors', () => {
-  const createMockPlanetDetails= (name) => {
-    return {...mockPlanet, name, id: name} as planetDetailsInterface
-  };
 
-  let state: {planets: planetsListInterface};
-  const planetsArray: planetDetailsInterface[] = [
+  let state: { planets: PlanetsListInterface };
+  const planetsArray: PlanetDetailsInterface[] = [
       createMockPlanetDetails('a'),
       createMockPlanetDetails('b'),
       createMockPlanetDetails('c')
     ],
-    favouritePlanetsArray: planetDetailsInterface[] = [
-        createMockPlanetDetails('a_fav'),
-        createMockPlanetDetails('b_fav')
+    favouritePlanetsArray: PlanetDetailsInterface[] = [
+      createMockPlanetDetails('a_fav'),
+      createMockPlanetDetails('b_fav')
     ],
     planets: PlanetsEntitiesState = planetsAdapter.addAll(planetsArray, {
-    ids: [],
-    entities: {}
-  }),
-    favouritePlanets: PlanetsEntitiesState = planetsAdapter.addAll(favouritePlanetsArray, {
       ids: [],
       entities: {}
     }),
-    mockPlanetDetails: planetDetailsInterface = createMockPlanetDetails('a');
+    favouritePlanets: PlanetsEntitiesState = planetsAdapter.addAll(
+      favouritePlanetsArray,
+      {
+        ids: [],
+        entities: {}
+      }
+    ),
+    mockPlanetDetails: PlanetDetailsInterface = createMockPlanetDetails('a');
 
   beforeEach(() => {
-    state = {planets : {
-       planets,
+    state = {
+      planets: {
+        planets,
         favouritePlanets,
         count: 0,
         page: 1,
@@ -39,35 +43,35 @@ describe('Planets Selectors', () => {
         detailsLoading: false,
         planetDetails: mockPlanetDetails,
         detailsError: null
-    }}
+      }
+    };
   });
-
 
   it('PlanetsSelectors.getAllPlanets', () => {
-      const selection = PlanetsSelectors.getAllPlanets(state);
+    const selection = PlanetsSelectors.getAllPlanets(state);
 
-      expect(selection.length).toBe(3);
-      expect(selection).toEqual(planetsArray);
+    expect(selection.length).toBe(3);
+    expect(selection).toEqual(planetsArray);
   });
 
-    it('PlanetsSelectors.getFavouritePlanetsArray', () => {
-      const selection = PlanetsSelectors.getFavouritePlanetsArray(state);
+  it('PlanetsSelectors.getFavouritePlanetsArray', () => {
+    const selection = PlanetsSelectors.getFavouritePlanetsArray(state);
 
-      expect(selection.length).toBe(2);
-      expect(selection).toEqual(favouritePlanetsArray);
-    });
+    expect(selection.length).toBe(2);
+    expect(selection).toEqual(favouritePlanetsArray);
+  });
 
-    it('PlanetsSelectors.getPlanetsDetails', () => {
-      const selection = PlanetsSelectors.getPlanetsDetails(state);
+  it('PlanetsSelectors.getPlanetsDetails', () => {
+    const selection = PlanetsSelectors.getPlanetsDetails(state);
 
-      expect(selection).toEqual(mockPlanetDetails);
-    });
+    expect(selection).toEqual(mockPlanetDetails);
+  });
 
-    it('PlanetsSelectors.getFavouritePlanetsBranch', () => {
-      const selection = PlanetsSelectors.getFavouritePlanetsBranch(state);
+  it('PlanetsSelectors.getFavouritePlanetsBranch', () => {
+    const selection = PlanetsSelectors.getFavouritePlanetsBranch(state);
 
-      expect(selection).toEqual(favouritePlanets);
-    });
+    expect(selection).toEqual(favouritePlanets);
+  });
 
   it('PlanetsSelectors.getPlanetsCount', () => {
     const selection = PlanetsSelectors.getPlanetsCount(state);
@@ -108,7 +112,6 @@ describe('Planets Selectors', () => {
   it('PlanetsSelectors.getPlanetsDetailsError', () => {
     const selection = PlanetsSelectors.getPlanetsDetailsError(state);
 
-    expect(selection).toEqual(state.planets.loading);
+    expect(selection).toEqual(state.planets.detailsError);
   });
-
 });

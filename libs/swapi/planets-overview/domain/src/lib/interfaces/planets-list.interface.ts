@@ -1,15 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { PlanetsEntitiesState } from '@swapi-app/swapi/planets-overview/data-access';
-import {planetDetailsInterface} from "./planet-details.interface";
+import { PlanetDetailsInterface } from './planet-details.interface';
 
-export interface planetsListInterface {
+export interface PlanetsListInterface {
   count: number;
   page: number;
   loading: boolean;
   error: HttpErrorResponse | null;
   planets: PlanetsEntitiesState;
   favouritePlanets: PlanetsEntitiesState;
-  detailsLoading: boolean,
-  planetDetails: planetDetailsInterface,
+  detailsLoading: boolean;
+  planetDetails: PlanetDetailsInterface;
   detailsError: HttpErrorResponse | null;
 }

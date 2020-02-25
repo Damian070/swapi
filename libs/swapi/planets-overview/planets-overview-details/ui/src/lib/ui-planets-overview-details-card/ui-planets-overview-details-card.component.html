@@ -17,10 +17,18 @@ with latest from combine latest, concat
     </mat-list>
   </mat-card-content>
   <mat-card-actions>
-    <button (click)="onClickToggleFavStatus()" mat-button *ngIf="!favesMap[planetDetails.name]">
+    <button
+      (click)="onClickToggleFavStatus()"
+      mat-button
+      *ngIf="!favesMap[planetDetails.name]"
+    >
       Add to favourites<mat-icon>star_bordered</mat-icon>
     </button>
-    <button (click)="onClickToggleFavStatus()" mat-button *ngIf="favesMap[planetDetails.name]">
+    <button
+      (click)="onClickToggleFavStatus()"
+      mat-button
+      *ngIf="favesMap[planetDetails.name]"
+    >
       Remove from favourites<mat-icon>star</mat-icon>
     </button>
   </mat-card-actions>
