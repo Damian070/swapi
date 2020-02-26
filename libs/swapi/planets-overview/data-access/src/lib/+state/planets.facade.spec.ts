@@ -17,49 +17,42 @@ import { PlanetsDetailsService } from '../services/planets-details.service';
 import { PlanetsDetailsEffects } from '@swapi-app/swapi/planets-overview/data-access';
 import {fromPlanetsActions} from "./planets.actions";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MockStore, provideMockStore} from "@ngrx/store/testing";
+import {provideMockActions} from "@ngrx/effects/testing";
+import {Observable} from "rxjs";
 
 interface TestSchema {
   planets: PlanetsListInterface;
 }
 
 describe('PlanetsFacade', () => {
+  let actions$: Observable<fromPlanetsActions.Types>;
   let facade: PlanetsFacade;
-  let store: Store<TestSchema>;
+  let store: Store<MockStore<TestSchema>>;
   let effects: PlanetsEffects;
 
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          HttpClientModule,
-          StoreModule.forFeature(PLANETS_FEATURE_KEY, reducer, {
-            initialState
-          }),
-          EffectsModule.forFeature([PlanetsEffects, PlanetsDetailsEffects])
+          NxModule.forRoot(),
+          HttpClientModule
         ],
         providers: [
           HttpClient,
-          Store,
+          provideMockStore({ initialState }),
+          provideMockActions(() => actions$),
           PlanetsFacade,
-          PlanetsOverviewListDataAccessService,
+          {provide: PlanetsDetailsService, useValue: createSpyObj(PlanetsDetailsService)},
+          {provide: PlanetsOverviewListDataAccessService, useValue: createSpyObj(PlanetsOverviewListDataAccessService)},
           PlanetsDetailsService
-        ]
-      })
-      class CustomFeatureModule {}
-
-      @NgModule({
-        imports: [
-          NxModule.forRoot(),
-          StoreModule.forRoot({}),
-          EffectsModule.forRoot([]),
-          CustomFeatureModule
         ]
       })
       class RootModule {}
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
-      facade = TestBed.get(PlanetsFacade);
+      facade = TestBed.get<PlanetsFacade>(PlanetsFacade);
+      store = TestBed.get<Store<TestSchema>>(Store);
       jest.spyOn(store, 'dispatch');
     });
 
