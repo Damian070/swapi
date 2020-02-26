@@ -67,6 +67,7 @@
     "cypress": "^3.8.2",
     "dotenv": "6.2.0",
     "eslint": "6.1.0",
+    "jasmine-marbles": "^0.6.0",
     "jest": "^25.1.0",
     "jest-createspyobj": "^1.2.2",
     "jest-html-reporter": "^2.8.0",
@@ -75,9 +76,9 @@
     "jest-stare": "^1.26.0",
     "lint-staged": "^10.0.7",
     "prettier": "1.18.2",
+    "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.7.4",
-    "ts-jest": "24.0.0"
+    "typescript": "~3.7.4"
   }
 }

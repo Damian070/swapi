@@ -18,6 +18,8 @@ import { PlanetsOverviewListDataAccessService } from '../services/planets-overvi
 import { createSpyObj } from 'jest-createspyobj';
 import { PlanetsDetailsService } from '../services/planets-details.service';
 import { PlanetsDetailsEffects } from '@swapi-app/swapi/planets-overview/data-access';
+import {fromPlanetsActions} from "./planets.actions";
+import {from} from "rxjs";
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -38,6 +40,7 @@ describe('PlanetsFacade', () => {
           EffectsModule.forFeature([PlanetsEffects, PlanetsDetailsEffects])
         ],
         providers: [
+          Store,
           PlanetsFacade,
           {
             provide: PlanetsOverviewListDataAccessService,
@@ -67,13 +70,16 @@ describe('PlanetsFacade', () => {
       jest.spyOn(store, 'dispatch');
     });
 
-    /**
-     * The initially generated facade::loadAll() returns empty array
-     */
-
-    it.only('Are things to be tested existent?', () => {
+    it('Are things to be tested existent?', () => {
       expect(store).toBeTruthy();
       expect(facade).toBeTruthy();
+    });
+
+    it('store should be called with actions', () => {
+      facade.getPlanets();
+      const action = new  fromPlanetsActions.LoadPlanets(1);
+
+      expect(store.dispatch).toHaveBeenCalled();
     });
 
     // it('loadAll() should return empty list with loaded == true', async done => {
