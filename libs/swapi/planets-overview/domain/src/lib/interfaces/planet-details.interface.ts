@@ -9,7 +9,7 @@ export interface PlanetDetailsInterface {
   terrain: string;
   surface_water: string;
   population: string;
-  residents: any[];
+  residents: string[];
   films: string[];
   created: string;
   edited: string;

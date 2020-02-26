@@ -7,7 +7,6 @@ import {
 import { createMockPlanetDetails } from './tests-assets/mockPlanet';
 
 describe('Planets Selectors', () => {
-
   let state: { planets: PlanetsListInterface };
   const planetsArray: PlanetDetailsInterface[] = [
       createMockPlanetDetails('a'),

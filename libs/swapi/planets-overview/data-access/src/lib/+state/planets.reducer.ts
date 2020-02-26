@@ -39,7 +39,6 @@ function extractId(planetInfo: PlanetDetailsInterface) {
   } else return planetInfo;
 }
 
-
 export interface PlanetsPartialState {
   readonly [PLANETS_FEATURE_KEY]: PlanetsListInterface;
 }
@@ -50,8 +49,7 @@ export function reducer(
 ) {
   switch (action.type) {
     case fromPlanetsActions.Types.LoadPlanetsFavouritesSuccess: {
-
-      if(! action.payload) break;
+      if (!action.payload) break;
 
       state = {
         ...state,

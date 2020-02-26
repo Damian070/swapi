@@ -16,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiPlanetsOverviewDetailsCardComponent implements OnInit {
-  @Input() planetDetails: PlanetDetailsInterface;
+  @Input() planetDetails;
   @Input() error: null | HttpErrorResponse;
   @Input() loading: boolean;
   @Input() set favourites(faves: PlanetDetailsInterface[]) {

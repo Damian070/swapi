@@ -5,23 +5,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule, Store } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 
-import {PlanetsListInterface} from "@swapi-app/swapi/planets-overview/domain";
+import { PlanetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 import { PlanetsEffects } from './planets.effects';
 import { PlanetsFacade } from './planets.facade';
 import * as PlanetsSelectors from './planets.selectors';
 import * as PlanetsActions from './planets.actions';
-import {
-  PLANETS_FEATURE_KEY,
-  initialState,
-  reducer
-} from './planets.reducer';
-import {createMockPlanetDetails} from "./tests-assets/mockPlanet";
-import {PlanetsOverviewListDataAccessService} from "../services/planets-overview-list-data-access.service";
+import { PLANETS_FEATURE_KEY, initialState, reducer } from './planets.reducer';
+import { createMockPlanetDetails } from './tests-assets/mockPlanet';
+import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
 
-import {createSpyObj} from 'jest-createspyobj';
-import {PlanetsDetailsService} from "../services/planets-details.service";
-import {PlanetsDetailsEffects} from "@swapi-app/swapi/planets-overview/data-access";
+import { createSpyObj } from 'jest-createspyobj';
+import { PlanetsDetailsService } from '../services/planets-details.service';
+import { PlanetsDetailsEffects } from '@swapi-app/swapi/planets-overview/data-access';
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -36,13 +32,22 @@ describe('PlanetsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(PLANETS_FEATURE_KEY, reducer, { initialState }),
+          StoreModule.forFeature(PLANETS_FEATURE_KEY, reducer, {
+            initialState
+          }),
           EffectsModule.forFeature([PlanetsEffects, PlanetsDetailsEffects])
         ],
-        providers: [PlanetsFacade,{
-          provide: PlanetsOverviewListDataAccessService,
-          useValue: createSpyObj(PlanetsOverviewListDataAccessService)
-        },{provide: PlanetsDetailsService, useValue: createSpyObj(PlanetsDetailsService)}]
+        providers: [
+          PlanetsFacade,
+          {
+            provide: PlanetsOverviewListDataAccessService,
+            useValue: createSpyObj(PlanetsOverviewListDataAccessService)
+          },
+          {
+            provide: PlanetsDetailsService,
+            useValue: createSpyObj(PlanetsDetailsService)
+          }
+        ]
       })
       class CustomFeatureModule {}
 

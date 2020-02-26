@@ -7,3 +7,4 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageReporters: ['html']
 };
+module.exports.setupFilesAfterEnv = ['<rootDir>/src/test-setup.ts'];

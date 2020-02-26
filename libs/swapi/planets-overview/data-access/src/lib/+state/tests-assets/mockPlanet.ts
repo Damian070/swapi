@@ -18,6 +18,6 @@ export const mockPlanet: PlanetDetailsInterface = {
   url: '52'
 };
 
-export  const createMockPlanetDetails = name => {
+export const createMockPlanetDetails = name => {
   return { ...mockPlanet, name, id: name } as PlanetDetailsInterface;
 };
