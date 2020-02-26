@@ -1,19 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { combineLatest, forkJoin, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
-import { map, mergeMap } from 'rxjs/operators';
+import { SWAPI_API } from '../../../../../../../apps/swapi-app/src/config/swapi.token';
 
 @Injectable({
   providedIn: 'any'
 })
 export class PlanetsDetailsService {
-  constructor(private http: HttpClient) {}
-  path = 'https://swapi.co/api/planets/';
+  constructor(private http: HttpClient, @Inject(SWAPI_API) public apiUrl) {}
 
   getPlanetsDetails(id: number): Observable<any> {
-    return this.http.get<PlanetDetailsInterface>(`${this.path}${id}`);
+    return this.http.get<PlanetDetailsInterface>(`${this.apiUrl}/planets${id}`);
   }
-
 }

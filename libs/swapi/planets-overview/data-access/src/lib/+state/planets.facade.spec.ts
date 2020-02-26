@@ -15,11 +15,12 @@ import { PlanetsOverviewListDataAccessService } from '../services/planets-overvi
 import { createSpyObj } from 'jest-createspyobj';
 import { PlanetsDetailsService } from '../services/planets-details.service';
 import { PlanetsDetailsEffects } from '@swapi-app/swapi/planets-overview/data-access';
-import {fromPlanetsActions} from "./planets.actions";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {MockStore, provideMockStore} from "@ngrx/store/testing";
-import {provideMockActions} from "@ngrx/effects/testing";
-import {Observable} from "rxjs";
+import { fromPlanetsActions } from './planets.actions';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { Observable } from 'rxjs';
+import { SWAPI_API } from '../../../../../../../apps/swapi-app/src/config/swapi.token';
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -34,17 +35,21 @@ describe('PlanetsFacade', () => {
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
-        imports: [
-          NxModule.forRoot(),
-          HttpClientModule
-        ],
+        imports: [NxModule.forRoot(), HttpClientModule],
         providers: [
           HttpClient,
           provideMockStore({ initialState }),
           provideMockActions(() => actions$),
           PlanetsFacade,
-          {provide: PlanetsDetailsService, useValue: createSpyObj(PlanetsDetailsService)},
-          {provide: PlanetsOverviewListDataAccessService, useValue: createSpyObj(PlanetsOverviewListDataAccessService)},
+          {
+            provide: PlanetsDetailsService,
+            useValue: createSpyObj(PlanetsDetailsService)
+          },
+          {
+            provide: PlanetsOverviewListDataAccessService,
+            useValue: createSpyObj(PlanetsOverviewListDataAccessService)
+          },
+          { provide: SWAPI_API, useValue: 'https://swapi.co/api/' },
           PlanetsDetailsService
         ]
       })
@@ -62,7 +67,7 @@ describe('PlanetsFacade', () => {
     });
 
     it('store should be called with actions', () => {
-      const getPlanets = new  fromPlanetsActions.LoadPlanets(1);
+      const getPlanets = new fromPlanetsActions.LoadPlanets(1);
       const getFavPlanets = new fromPlanetsActions.LoadPlanetsFavourites();
 
       facade.getPlanets();

@@ -2,7 +2,6 @@ import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
-import { PlanetsEntitiesState } from './planets.reducer';
 
 export namespace fromPlanetsActions {
   export enum Types {
