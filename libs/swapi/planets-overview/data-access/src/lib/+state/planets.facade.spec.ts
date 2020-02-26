@@ -9,17 +9,14 @@ import { PlanetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 import { PlanetsEffects } from './planets.effects';
 import { PlanetsFacade } from './planets.facade';
-import * as PlanetsSelectors from './planets.selectors';
-import * as PlanetsActions from './planets.actions';
 import { PLANETS_FEATURE_KEY, initialState, reducer } from './planets.reducer';
-import { createMockPlanetDetails } from './tests-assets/mockPlanet';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
 
 import { createSpyObj } from 'jest-createspyobj';
 import { PlanetsDetailsService } from '../services/planets-details.service';
 import { PlanetsDetailsEffects } from '@swapi-app/swapi/planets-overview/data-access';
 import {fromPlanetsActions} from "./planets.actions";
-import {from} from "rxjs";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -34,22 +31,18 @@ describe('PlanetsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
+          HttpClientModule,
           StoreModule.forFeature(PLANETS_FEATURE_KEY, reducer, {
             initialState
           }),
           EffectsModule.forFeature([PlanetsEffects, PlanetsDetailsEffects])
         ],
         providers: [
+          HttpClient,
           Store,
           PlanetsFacade,
-          {
-            provide: PlanetsOverviewListDataAccessService,
-            useValue: createSpyObj(PlanetsOverviewListDataAccessService)
-          },
-          {
-            provide: PlanetsDetailsService,
-            useValue: createSpyObj(PlanetsDetailsService)
-          }
+          PlanetsOverviewListDataAccessService,
+          PlanetsDetailsService
         ]
       })
       class CustomFeatureModule {}
@@ -76,61 +69,16 @@ describe('PlanetsFacade', () => {
     });
 
     it('store should be called with actions', () => {
+      const getPlanets = new  fromPlanetsActions.LoadPlanets(1);
+      const getFavPlanets = new fromPlanetsActions.LoadPlanetsFavourites();
+
       facade.getPlanets();
-      const action = new  fromPlanetsActions.LoadPlanets(1);
 
-      expect(store.dispatch).toHaveBeenCalled();
+      expect(store.dispatch).toHaveBeenCalledWith(getPlanets);
+
+      facade.getFavouritePlanets();
+
+      expect(store.dispatch).toHaveBeenCalledWith(getFavPlanets);
     });
-
-    // it('loadAll() should return empty list with loaded == true', async done => {
-    //   try {
-    //     let list = await readFirst(facade.allPlanets$);
-    //     let isLoaded = await readFirst(facade.loaded$);
-    //
-    //     expect(list.length).toBe(0);
-    //     expect(isLoaded).toBe(false);
-    //
-    //     facade.dispatch(PlanetsActions.loadPlanets());
-    //
-    //     list = await readFirst(facade.allPlanets$);
-    //     isLoaded = await readFirst(facade.loaded$);
-    //
-    //     expect(list.length).toBe(0);
-    //     expect(isLoaded).toBe(true);
-    //
-    //     done();
-    //   } catch (err) {
-    //     done.fail(err);
-    //   }
-    // });
-
-    /**
-     * Use `loadPlanetsSuccess` to manually update list
-     */
-    // it('allPlanets$ should return the loaded list; and loaded flag == true', async done => {
-    //   try {
-    //     let list = await readFirst(facade.allPlanets$);
-    //     let isLoaded = await readFirst(facade.loaded$);
-    //
-    //     expect(list.length).toBe(0);
-    //     expect(isLoaded).toBe(false);
-    //
-    //     facade.dispatch(
-    //       PlanetsActions.loadPlanetsSuccess({
-    //         planets: [createPlanetsEntity('AAA'), createPlanetsEntity('BBB')]
-    //       })
-    //     );
-    //
-    //     list = await readFirst(facade.allPlanets$);
-    //     isLoaded = await readFirst(facade.loaded$);
-    //
-    //     expect(list.length).toBe(2);
-    //     expect(isLoaded).toBe(true);
-    //
-    //     done();
-    //   } catch (err) {
-    //     done.fail(err);
-    //   }
-    // });
   });
 });

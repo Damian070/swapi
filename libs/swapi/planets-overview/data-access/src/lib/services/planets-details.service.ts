@@ -16,17 +16,4 @@ export class PlanetsDetailsService {
     return this.http.get<PlanetDetailsInterface>(`${this.path}${id}`);
   }
 
-  //   getPlanetsDetails(id: number): Observable<any> {
-  //     return this.http.get<PlanetDetailsInterface>(`${this.path}${id}`).pipe(
-  //       mergeMap(res => {
-  //
-  //         console.log(res);
-  //
-  //         return forkJoin(res.residents.map(resident => this.http.get(resident))).pipe(
-  //           map(residents => [res, residents])
-  //         )
-  //       })
-  //     );
-  // }
-  // }
 }
