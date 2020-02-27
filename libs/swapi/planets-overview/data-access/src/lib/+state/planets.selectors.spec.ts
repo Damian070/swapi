@@ -2,11 +2,10 @@ import { planetsAdapter } from './planets.reducer';
 import * as PlanetsSelectors from './planets.selectors';
 import {
   PlanetDetailsInterface,
+  PlanetsEntitiesState,
   PlanetsListInterface
 } from '@swapi-app/swapi/planets-overview/domain';
 import { createMockPlanetDetails } from './tests-assets/mockPlanet';
-
-import { PlanetsEntitiesState } from '@swapi-app/swapi/planets-overview/domain';
 
 describe('Planets Selectors', () => {
   let state: { planets: PlanetsListInterface };

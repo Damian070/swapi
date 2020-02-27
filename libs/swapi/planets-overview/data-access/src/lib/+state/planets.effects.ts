@@ -1,16 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, ofType, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import { fromPlanetsActions } from './planets.actions';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
-import {
-  catchError,
-  map,
-  mergeMap,
-  switchMap,
-  tap,
-  withLatestFrom
-} from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 

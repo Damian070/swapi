@@ -1,11 +1,8 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 
 import { fromPlanetsActions } from './planets.actions';
 
-import {
-  PlanetDetailsInterface,
-  PlanetsListInterface
-} from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetDetailsInterface, PlanetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 export const PLANETS_FEATURE_KEY = 'planets';
 

@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -15,7 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./ui-planets-overview-details-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UiPlanetsOverviewDetailsCardComponent implements OnInit {
+export class UiPlanetsOverviewDetailsCardComponent {
   @Input() planetDetails;
   @Input() error: null | HttpErrorResponse;
   @Input() loading: boolean;
@@ -36,8 +29,4 @@ export class UiPlanetsOverviewDetailsCardComponent implements OnInit {
   onClickToggleFavStatus() {
     this.toggleFavouriteStatus.emit(this.planetDetails);
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

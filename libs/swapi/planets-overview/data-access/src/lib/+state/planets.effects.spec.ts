@@ -8,7 +8,7 @@ import { PlanetsOverviewListDataAccessService } from '../services/planets-overvi
 import { HttpClientModule } from '@angular/common/http';
 import { createSpyObj } from 'jest-createspyobj';
 import { mockPlanet } from './tests-assets/mockPlanet';
-import { hot, cold } from 'jasmine-marbles';
+import { cold, hot } from 'jasmine-marbles';
 
 describe('UserEffects', () => {
   let actions$: Observable<fromPlanetsActions.Types>;

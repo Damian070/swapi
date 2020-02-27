@@ -4,10 +4,10 @@ import { select, Store } from '@ngrx/store';
 
 import * as fromPlanetsDetails from './planets.reducer';
 import {
+  getFavouritePlanetsArray,
   getPlanetsDetails,
   getPlanetsDetailsError,
-  getPlanetsDetailsLoading,
-  getFavouritePlanetsArray
+  getPlanetsDetailsLoading
 } from './planets.selectors';
 import { fromPlanetsActions } from './planets.actions';
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { PlanetsFacade } from '@swapi-app/swapi/planets-overview/data-access';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./planets-overview-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlanetsOverviewListComponent implements OnInit {
+export class PlanetsOverviewListComponent {
   planets$: Observable<PlanetDetailsInterface[]> = this.facade.allPlanets$;
   error$: Observable<HttpErrorResponse | null> = this.facade.error$;
   loading$: Observable<boolean> = this.facade.loading$;
@@ -26,6 +26,4 @@ export class PlanetsOverviewListComponent implements OnInit {
   onTogglePlanetsFavouriteStatus(planetsDetails: PlanetDetailsInterface) {
     this.facade.togglePlanetsFavouriteStatus(planetsDetails);
   }
-
-  ngOnInit(): void {}
 }

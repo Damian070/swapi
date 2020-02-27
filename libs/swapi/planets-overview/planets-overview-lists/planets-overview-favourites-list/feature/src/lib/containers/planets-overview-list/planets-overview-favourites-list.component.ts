@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 function returnChunkedArray(array) {
-  var i,
+  let i,
     j,
     temparray,
     currentIteration = 0,
@@ -31,8 +31,8 @@ function returnChunkedArray(array) {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlanetsOverviewFavouritesListComponent implements OnInit {
-  pagesCount: number = 1;
-  currentPage: number = 0;
+  pagesCount = 1;
+  currentPage= 0;
   chunkedFavPlanets: PlanetDetailsInterface[][];
   favouritePlanetsArray$: Observable<PlanetDetailsInterface[]> = this.facade
     .favouritePlanetsArray$;

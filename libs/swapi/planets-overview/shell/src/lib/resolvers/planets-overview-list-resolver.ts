@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { EMPTY, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { PlanetsFacade } from '@swapi-app/swapi/planets-overview/data-access';
 

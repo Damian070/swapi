@@ -2,10 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import {
-  PlanetDetailsInterface,
-  SWAPI_API
-} from '@swapi-app/swapi/planets-overview/domain';
+import { PlanetDetailsInterface, SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
 
 @Injectable({
   providedIn: 'root'

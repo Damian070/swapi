@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 
-import { PlanetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
-
-import { PlanetsEffects } from './planets.effects';
+import { PlanetsListInterface, SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
 import { PlanetsFacade } from './planets.facade';
-import { PLANETS_FEATURE_KEY, initialState, reducer } from './planets.reducer';
+import { initialState } from './planets.reducer';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
 
 import { createSpyObj } from 'jest-createspyobj';
@@ -18,7 +14,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
-import { SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
 
 interface TestSchema {
   planets: PlanetsListInterface;

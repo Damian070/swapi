@@ -1,8 +1,4 @@
-import {
-  fromPlanetsActions,
-  initialState,
-  reducer
-} from '@swapi-app/swapi/planets-overview/data-access';
+import { fromPlanetsActions, initialState, reducer } from '@swapi-app/swapi/planets-overview/data-access';
 
 import { HttpErrorResponse } from '@angular/common/http';
 

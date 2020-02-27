@@ -1,9 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import {
-  PLANETS_FEATURE_KEY,
-  PlanetsPartialState,
-  planetsAdapter
-} from './planets.reducer';
+import { PLANETS_FEATURE_KEY, planetsAdapter, PlanetsPartialState } from './planets.reducer';
 
 import { PlanetsListInterface } from '@swapi-app/swapi/planets-overview/domain';
 

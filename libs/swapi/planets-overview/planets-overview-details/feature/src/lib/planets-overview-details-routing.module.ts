@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { PlanetsOverviewDetailsComponent } from './containers/planets-overview-details/planets-overview-details.component';
 
