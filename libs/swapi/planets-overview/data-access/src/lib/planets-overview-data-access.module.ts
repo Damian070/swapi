@@ -24,4 +24,4 @@ import { PlanetsOverviewListDataAccessService } from './services/planets-overvie
     PlanetsOverviewListDataAccessService
   ]
 })
-export class PlanetsOverviewListDataAccessModule {}
+export class PlanetsOverviewDataAccessModule {}
