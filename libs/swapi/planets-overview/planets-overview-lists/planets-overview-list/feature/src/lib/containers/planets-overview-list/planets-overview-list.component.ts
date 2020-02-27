@@ -7,7 +7,7 @@ import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'planets-overview-list',
+  selector: 'app-planets-overview-list',
   templateUrl: './planets-overview-list.component.html',
   styleUrls: ['./planets-overview-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush

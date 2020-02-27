@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-planets-overview-container',
@@ -6,5 +6,4 @@ import { ChangeDetectionStrategy, Component} from '@angular/core';
   styleUrls: ['./planets-overview-container.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlanetsOverviewContainerComponent {
-}
+export class PlanetsOverviewContainerComponent {}

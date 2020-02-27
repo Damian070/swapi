@@ -3,7 +3,10 @@ import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 
-import { PlanetsListInterface, SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
+import {
+  PlanetsListInterface,
+  SWAPI_API
+} from '@swapi-app/swapi/planets-overview/domain';
 import { PlanetsFacade } from './planets.facade';
 import { initialState } from './planets.reducer';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';

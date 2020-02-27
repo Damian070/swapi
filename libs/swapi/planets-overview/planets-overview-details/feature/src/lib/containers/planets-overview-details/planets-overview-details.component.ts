@@ -4,7 +4,7 @@ import { PlanetsDetailsFacade } from '@swapi-app/swapi/planets-overview/data-acc
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 
 @Component({
-  selector: 'planets-overview-details',
+  selector: 'app-planets-overview-details',
   templateUrl: './planets-overview-details.component.html',
   styleUrls: ['./planets-overview-details.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush

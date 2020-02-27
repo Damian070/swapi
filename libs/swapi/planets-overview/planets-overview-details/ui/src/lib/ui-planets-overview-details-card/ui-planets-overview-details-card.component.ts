@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { PlanetDetailsInterface } from '@swapi-app/swapi/planets-overview/domain';
 import { HttpErrorResponse } from '@angular/common/http';
 

@@ -9,8 +9,8 @@ function returnChunkedArray(array) {
   let i,
     j,
     temparray,
-    currentIteration = 0,
-    chunk = 10,
+    currentIteration = 0;
+  const chunk = 10,
     resultArray: any[] = [];
 
   for (i = 0, j = array.length; i < j; i += chunk) {
@@ -25,14 +25,14 @@ function returnChunkedArray(array) {
 }
 
 @Component({
-  selector: 'planets-overview-list',
+  selector: 'app-planets-overview-list',
   templateUrl: './planets-overview-favourites-list.component.html',
   styleUrls: ['./planets-overview-favourites-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlanetsOverviewFavouritesListComponent implements OnInit {
   pagesCount = 1;
-  currentPage= 0;
+  currentPage = 0;
   chunkedFavPlanets: PlanetDetailsInterface[][];
   favouritePlanetsArray$: Observable<PlanetDetailsInterface[]> = this.facade
     .favouritePlanetsArray$;

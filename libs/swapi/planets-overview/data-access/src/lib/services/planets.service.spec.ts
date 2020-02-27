@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 import { PlanetsOverviewListDataAccessService } from './planets-overview-list-data-access.service';
 import { createMockPlanetDetails } from '../+state/tests-assets/mockPlanet';
 import { SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';

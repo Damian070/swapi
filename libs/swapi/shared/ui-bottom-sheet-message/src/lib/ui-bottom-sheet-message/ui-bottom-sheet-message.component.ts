@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Location } from '@angular/common';
-import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import {
+  MAT_BOTTOM_SHEET_DATA,
+  MatBottomSheetRef
+} from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'ui-bottom-sheet-message',
