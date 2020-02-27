@@ -33,6 +33,22 @@ export class PlanetsEffects {
     )
   );
 
+  @Effect()
+  loadPlanetsDetails$ = this.actions$.pipe(
+    ofType(fromPlanetsActions.Types.LoadPlanetDetails),
+    mergeMap((action: fromPlanetsActions.LoadPlanetDetails) =>
+      this.dataAccessService.getPlanetsDetails(action.payload).pipe(
+        map(
+          planetsDetails =>
+            new fromPlanetsActions.LoadPlanetDetailsSuccess(planetsDetails)
+        ),
+        catchError(err =>
+          of(new fromPlanetsActions.LoadPlanetDetailsFailure(err))
+        )
+      )
+    )
+  );
+
   @Effect({
     dispatch: false
   })

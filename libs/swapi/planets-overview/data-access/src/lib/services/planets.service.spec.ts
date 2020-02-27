@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { PlanetsOverviewListDataAccessService } from './planets-overview-list-data-access.service';
 import { createMockPlanetDetails } from '../+state/tests-assets/mockPlanet';
-import { SWAPI_API } from '../../../../../../../apps/swapi-app/src/config/swapi.token';
+import { SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
 
 describe('Planets overview service', () => {
   let service: PlanetsOverviewListDataAccessService;

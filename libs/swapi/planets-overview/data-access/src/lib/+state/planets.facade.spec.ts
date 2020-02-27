@@ -13,14 +13,12 @@ import { PLANETS_FEATURE_KEY, initialState, reducer } from './planets.reducer';
 import { PlanetsOverviewListDataAccessService } from '../services/planets-overview-list-data-access.service';
 
 import { createSpyObj } from 'jest-createspyobj';
-import { PlanetsDetailsService } from '../services/planets-details.service';
-import { PlanetsDetailsEffects } from '@swapi-app/swapi/planets-overview/data-access';
 import { fromPlanetsActions } from './planets.actions';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
-import { SWAPI_API } from '../../../../../../../apps/swapi-app/src/config/swapi.token';
+import { SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -30,7 +28,6 @@ describe('PlanetsFacade', () => {
   let actions$: Observable<fromPlanetsActions.Types>;
   let facade: PlanetsFacade;
   let store: Store<MockStore<TestSchema>>;
-  let effects: PlanetsEffects;
 
   describe('used in NgModule', () => {
     beforeEach(() => {
@@ -42,15 +39,10 @@ describe('PlanetsFacade', () => {
           provideMockActions(() => actions$),
           PlanetsFacade,
           {
-            provide: PlanetsDetailsService,
-            useValue: createSpyObj(PlanetsDetailsService)
-          },
-          {
             provide: PlanetsOverviewListDataAccessService,
             useValue: createSpyObj(PlanetsOverviewListDataAccessService)
           },
-          { provide: SWAPI_API, useValue: 'https://swapi.co/api/' },
-          PlanetsDetailsService
+          { provide: SWAPI_API, useValue: 'https://swapi.co/api/' }
         ]
       })
       class RootModule {}

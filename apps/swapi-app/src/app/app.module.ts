@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { PlanetsOverviewShellModule } from '@swapi-app/swapi/planets-overview/shell';
 import { NxModule } from '@nrwl/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SWAPI_API } from '../config/swapi.token';
+import { SWAPI_API } from '@swapi-app/swapi/planets-overview/domain';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,5 +1,4 @@
 import { PlanetsEffects } from './planets.effects';
-import { PlanetsDetailsService } from '../services/planets-details.service';
 import { Observable } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
@@ -14,7 +13,6 @@ import { hot, cold } from 'jasmine-marbles';
 describe('UserEffects', () => {
   let actions$: Observable<fromPlanetsActions.Types>;
   let effects: PlanetsEffects;
-  let planetsDetailsService: PlanetsDetailsService;
   let planetsListService: PlanetsOverviewListDataAccessService;
 
   beforeEach(() => {

@@ -9,9 +9,6 @@ import {
 
 export const PLANETS_FEATURE_KEY = 'planets';
 
-export interface PlanetsEntitiesState
-  extends EntityState<PlanetDetailsInterface> {}
-
 export const planetsAdapter: EntityAdapter<
   PlanetDetailsInterface
 > = createEntityAdapter<PlanetDetailsInterface>({
