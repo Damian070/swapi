@@ -7,7 +7,6 @@ import { PlanetsEffects } from './+state/planets.effects';
 import { PlanetsFacade } from './+state/planets.facade';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanetsOverviewListDataAccessService } from './services/planets-overview-list-data-access.service';
-import { PlanetsDetailsFacade } from './+state/planets-details.facade';
 
 @NgModule({
   declarations: [],
@@ -22,8 +21,7 @@ import { PlanetsDetailsFacade } from './+state/planets-details.facade';
   ],
   providers: [
     PlanetsFacade,
-    PlanetsOverviewListDataAccessService,
-    PlanetsDetailsFacade
+    PlanetsOverviewListDataAccessService
   ]
 })
 export class PlanetsOverviewListDataAccessModule {}

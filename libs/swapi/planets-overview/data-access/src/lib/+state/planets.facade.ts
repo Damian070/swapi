@@ -16,6 +16,9 @@ export class PlanetsFacade {
   favouritePlanetsArray$ = this.store.pipe(
     select(PlanetsSelectors.getFavouritePlanetsArray)
   );
+  planetsDetailsloading$ = this.store.pipe(select(PlanetsSelectors.getPlanetsDetailsLoading));
+  planetsDetailserror$ = this.store.pipe(select(PlanetsSelectors.getPlanetsDetailsError));
+  planetsDetails$ = this.store.pipe(select(PlanetsSelectors.getPlanetsDetails));
 
   constructor(private store: Store<fromPlanets.PlanetsPartialState>) {}
 
@@ -23,6 +26,10 @@ export class PlanetsFacade {
     this.store.dispatch(
       new fromPlanetsActions.TogglePlanetsFavouriteStatus(planetsDetails)
     );
+  }
+
+  loadPlanetsDetails(planetsId: number) {
+    this.store.dispatch(new fromPlanetsActions.LoadPlanetDetails(planetsId));
   }
 
   getFavouritePlanets(): void {

@@ -5,7 +5,6 @@ import { PlanetsOverviewShellRoutingModule } from './planets-overview-shell-rout
 import { PlanetsOverviewContainerComponent } from './containers/planets-overview-container/planets-overview-container.component';
 import { PlanetsOverviewListResolver } from './resolvers/planets-overview-list-resolver';
 import {
-  PlanetsDetailsFacade,
   PlanetsFacade
 } from '@swapi-app/swapi/planets-overview/data-access';
 import { UiHeaderModule } from '@swapi-app/swapi/shared/ui-header';
@@ -17,8 +16,7 @@ import { PlanetsOverviewDetailsResolver } from './resolvers/planets-overview-det
   providers: [
     PlanetsOverviewListResolver,
     PlanetsOverviewDetailsResolver,
-    PlanetsFacade,
-    PlanetsDetailsFacade
+    PlanetsFacade
   ]
 })
 export class PlanetsOverviewShellModule {}
