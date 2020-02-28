@@ -17,7 +17,6 @@ describe('UserEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
       providers: [
         provideMockStore(),
         PlanetsEffects,

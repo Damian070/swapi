@@ -17,6 +17,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
+import { mockPlanet } from './tests-assets/mockPlanet';
+import mock = jest.mock;
 
 interface TestSchema {
   planets: PlanetsListInterface;
@@ -56,17 +58,34 @@ describe('PlanetsFacade', () => {
       expect(facade).toBeTruthy();
     });
 
-    it('store should be called with actions', () => {
+    it('[facade ] LoadPlanets', () => {
       const getPlanets = new fromPlanetsActions.LoadPlanets(1);
-      const getFavPlanets = new fromPlanetsActions.LoadPlanetsFavourites();
 
       facade.getPlanets();
 
       expect(store.dispatch).toHaveBeenCalledWith(getPlanets);
+    });
 
+    it('[facade] LoadPlanetsFavourites', () => {
+      const getFavPlanets = new fromPlanetsActions.LoadPlanetsFavourites();
       facade.getFavouritePlanets();
-
       expect(store.dispatch).toHaveBeenCalledWith(getFavPlanets);
+    });
+
+    it('[facade] TogglePlanetsFavouriteStatus', () => {
+      const togglePlanet = new fromPlanetsActions.TogglePlanetsFavouriteStatus(mockPlanet);
+      facade.togglePlanetsFavouriteStatus(mockPlanet);
+
+      expect(store.dispatch).toHaveBeenCalledWith(togglePlanet);
+    });
+
+    it('[facade] LoadPlanetDetails', () => {
+      const planetId = 5;
+      const loadPlanetsDetails = new fromPlanetsActions.LoadPlanetDetails(planetId);
+
+      facade.loadPlanetsDetails(planetId);
+
+      expect(store.dispatch).toHaveBeenCalledWith(loadPlanetsDetails);
     });
   });
 });
